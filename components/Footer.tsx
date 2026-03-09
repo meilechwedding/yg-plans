@@ -22,9 +22,8 @@ export default function Footer() {
         </div>
         <div>
           <p className="footerTitle">Contact</p>
-          <p>hello@ygplan.studio</p>
-          <p>+971 (0) 4 000 0000</p>
-          <p>Dubai Design District</p>
+          <p>Team: Yidel Grunberger, Tuli Strasser</p>
+          <p>845-263-6855</p>
         </div>
       </div>
       <div className="container footerBottom">© {new Date().getFullYear()} YG plan. All rights reserved.</div>

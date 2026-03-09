@@ -28,9 +28,8 @@ export default function ContactPage() {
         <Reveal delay={0.1}>
           <div className="contactCard">
             <h3>Studio Contact</h3>
-            <p>hello@ygplan.studio</p>
-            <p>+971 (0) 4 000 0000</p>
-            <p>Dubai Design District</p>
+            <p>Team: Yidel Grunberger, Tuli Strasser</p>
+            <p>845-263-6855</p>
             <p>Consultation appointments available Monday–Friday.</p>
           </div>
         </Reveal>
