@@ -1,0 +1,7 @@
+<svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="78" height="78" stroke="#B89353" stroke-width="1.5"/>
+<path d="M22 22L40 48L58 22" stroke="#B89353" stroke-width="2"/>
+<path d="M40 48V60" stroke="#B89353" stroke-width="2"/>
+<text x="95" y="36" fill="#B89353" font-size="28" font-family="serif">YG</text>
+<text x="95" y="58" fill="#2A2825" font-size="14" letter-spacing="4">PLAN</text>
+</svg>
