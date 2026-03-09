@@ -1,0 +1,44 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { navLinks } from '@/data/content';
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <header className={`siteHeader ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container navWrap">
+        <Link href="/" className="brandMark" aria-label="YG plan home">
+          <Image src="/yg-plan-logo.svg" alt="YG plan logo" width={150} height={52} priority />
+        </Link>
+
+        <nav className={`mainNav ${menuOpen ? 'open' : ''}`}>
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
+          <Link className="ctaButton" href="/contact" onClick={() => setMenuOpen(false)}>
+            Book a Consultation
+          </Link>
+        </nav>
+
+        <button className="menuToggle" onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
+          <span />
+          <span />
+        </button>
+      </div>
+    </header>
+  );
+}
