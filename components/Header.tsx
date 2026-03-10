@@ -13,7 +13,7 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 28);
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -25,11 +25,19 @@ export default function Header() {
         <Link href="/" aria-label="YG plan home"><Image src="/yg-plan-logo.svg" alt="YG plan logo" width={138} height={48} priority /></Link>
         <nav className={`mainNav ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
-            <Magnetic key={link.href}><Link href={link.href} className={pathname === link.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>{link.label}</Link></Magnetic>
+            <Link key={link.href} href={link.href} className={pathname === link.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </Link>
           ))}
-          <Magnetic><Link href="/contact" className="ctaButton" onClick={() => setMenuOpen(false)}>Start</Link></Magnetic>
+          <Link className="ctaButton" href="/contact" onClick={() => setMenuOpen(false)}>
+            Start Your Project
+          </Link>
         </nav>
-        <button className={`menuToggle ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu"><span /><span /></button>
+
+        <button className={`menuToggle ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
+          <span />
+          <span />
+        </button>
       </div>
     </header>
   );
