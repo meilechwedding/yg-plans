@@ -42,6 +42,9 @@ export default function ContactPage() {
             <p>(845) 000-1948</p>
             <p>Monsey, NY</p>
             <p>Serving Rockland County and nearby communities.</p>
+            <p>Team: Yidel Grunberger, Tuli Strasser</p>
+            <p>845-263-6855</p>
+            <p>Consultation appointments available Monday–Friday.</p>
           </div>
         </Reveal>
       </div>

@@ -24,10 +24,8 @@ export default function Footer() {
         </div>
         <div>
           <p className="footerTitle">Contact</p>
-          <p>hello@ygplanny.com</p>
-          <p>(845) 000-1948</p>
-          <p>Monsey, New York</p>
-          <p>Serving Rockland County and surrounding communities.</p>
+          <p>Team: Yidel Grunberger, Tuli Strasser</p>
+          <p>845-263-6855</p>
         </div>
       </div>
       <div className="container footerBottom">© {new Date().getFullYear()} YG plan. All rights reserved.</div>
