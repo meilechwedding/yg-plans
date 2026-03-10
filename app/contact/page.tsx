@@ -3,6 +3,15 @@
 import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 
+const fields = [
+  'Name',
+  'Email',
+  'Phone',
+  'Project Type',
+  'Property Location',
+  'Estimated Budget'
+];
+
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const onSubmit = (e: FormEvent) => {
@@ -11,24 +20,33 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="section pageTop container">
-      <p className="eyebrow">Contact</p>
-      <h1>Start your project.</h1>
-      <div className="contactSplit">
-        <div className="contactVisual">
-          <Image src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=1400&q=80" alt="Architectural material and planning desk" fill sizes="(max-width: 900px) 100vw, 45vw" />
-        </div>
-        <form className="contactModern" onSubmit={onSubmit}>
-          <label>Name<input required /></label>
-          <label>Email<input type="email" required /></label>
-          <label>Phone<input /></label>
-          <label>Project Type<input /></label>
-          <label>Property Location<input /></label>
-          <label>Estimated Budget<input /></label>
-          <label>Message<textarea rows={4} required /></label>
-          <button className="ctaButton" type="submit">Submit Inquiry</button>
-          {sent && <p className="successMsg">Thanks. We’ll get back to you shortly.</p>}
-        </form>
+    <section className="section container pageTop">
+      <Reveal><p className="eyebrow">Contact</p></Reveal>
+      <Reveal><h1>Tell us about your project, property, or renovation goals.</h1></Reveal>
+      <Reveal><p>We’ll review your inquiry and get back to you promptly with next steps.</p></Reveal>
+      <div className="contactGrid">
+        <Reveal>
+          <form className="contactForm" onSubmit={onSubmit}>
+            {fields.map((f) => (
+              <label key={f}>{f}<input required={f === 'Name' || f === 'Email'} /></label>
+            ))}
+            <label>Message<textarea rows={5} required /></label>
+            <button className="ctaButton" type="submit">Submit Inquiry</button>
+            {sent && <p className="successMsg">Thank you. Our Monsey studio will be in touch shortly.</p>}
+          </form>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="contactCard">
+            <h3>Studio Contact</h3>
+            <p>hello@ygplanny.com</p>
+            <p>(845) 000-1948</p>
+            <p>Monsey, NY</p>
+            <p>Serving Rockland County and nearby communities.</p>
+            <p>Team: Yidel Grunberger, Tuli Strasser</p>
+            <p>845-263-6855</p>
+            <p>Consultation appointments available Monday–Friday.</p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
