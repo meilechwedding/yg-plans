@@ -1,4 +1,5 @@
 import Reveal from '@/components/Reveal';
+import ScrollGuide from '@/components/ScrollGuide';
 
 export default function ProcessPage() {
   const steps = [

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/data/content';
+import Magnetic from '@/components/Magnetic';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,10 +22,7 @@ export default function Header() {
   return (
     <header className={`siteHeader ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navWrap">
-        <Link href="/" className="brandMark" aria-label="YG plan home">
-          <Image src="/yg-plan-logo.svg" alt="YG plan logo" width={150} height={52} priority />
-        </Link>
-
+        <Link href="/" aria-label="YG plan home"><Image src="/yg-plan-logo.svg" alt="YG plan logo" width={138} height={48} priority /></Link>
         <nav className={`mainNav ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className={pathname === link.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>

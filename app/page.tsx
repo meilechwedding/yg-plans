@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import SplitText from '@/components/SplitText';
 import PlanLines from '@/components/PlanLines';
@@ -64,6 +63,7 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+        <HorizontalProjects items={projects} />
       </section>
 
       <section className="section sectionAlt">
@@ -93,7 +93,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section ctaStrip">
+      <section className="section ctaMinimal">
         <div className="container">
           <Reveal>
             <h2>Let’s plan your next project.</h2>

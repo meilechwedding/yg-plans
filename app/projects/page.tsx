@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import Reveal from '@/components/Reveal';
 import { projects } from '@/data/content';
 
@@ -67,9 +67,10 @@ export default function ProjectsPage() {
               <small><strong>Scope:</strong> {projectDetails.scope}</small>
               <small><strong>Design Notes:</strong> {projectDetails.designNotes}</small>
             </div>
-          </div>
-        </div>
-      )}
+            <p>{selected.summary}</p>
+          </article>
+        </Reveal>
+      </div>
     </section>
   );
 }

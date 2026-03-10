@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import Reveal from '@/components/Reveal';
+import Image from 'next/image';
 
 const fields = [
   'Name',

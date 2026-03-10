@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { navLinks } from '@/data/content';
 
@@ -28,7 +27,6 @@ export default function Footer() {
           <p>845-263-6855</p>
         </div>
       </div>
-      <div className="container footerBottom">© {new Date().getFullYear()} YG plan. All rights reserved.</div>
     </footer>
   );
 }
