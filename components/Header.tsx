@@ -3,14 +3,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { navLinks } from '@/data/content';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 28);
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -25,16 +27,16 @@ export default function Header() {
 
         <nav className={`mainNav ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+            <Link key={link.href} href={link.href} className={pathname === link.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>
               {link.label}
             </Link>
           ))}
           <Link className="ctaButton" href="/contact" onClick={() => setMenuOpen(false)}>
-            Book a Consultation
+            Start Your Project
           </Link>
         </nav>
 
-        <button className="menuToggle" onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
+        <button className={`menuToggle ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
           <span />
           <span />
         </button>

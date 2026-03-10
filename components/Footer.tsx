@@ -8,7 +8,9 @@ export default function Footer() {
       <div className="container footerGrid">
         <div>
           <Image src="/yg-plan-logo.svg" alt="YG plan logo" width={140} height={50} />
-          <p className="footerLead">Architecture, planning, and design shaped with precision, calm, and timeless intent.</p>
+          <p className="footerLead">
+            A Monsey-based architecture and planning studio designing thoughtful homes, renovations, and multi-family spaces across Rockland County.
+          </p>
         </div>
         <div>
           <p className="footerTitle">Navigate</p>
@@ -22,9 +24,10 @@ export default function Footer() {
         </div>
         <div>
           <p className="footerTitle">Contact</p>
-          <p>hello@ygplan.studio</p>
-          <p>+971 (0) 4 000 0000</p>
-          <p>Dubai Design District</p>
+          <p>hello@ygplanny.com</p>
+          <p>(845) 000-1948</p>
+          <p>Monsey, New York</p>
+          <p>Serving Rockland County and surrounding communities.</p>
         </div>
       </div>
       <div className="container footerBottom">© {new Date().getFullYear()} YG plan. All rights reserved.</div>
