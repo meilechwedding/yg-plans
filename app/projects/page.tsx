@@ -11,10 +11,10 @@ export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>('All');
   const [activeProject, setActiveProject] = useState<string | null>(null);
 
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === 'All') return projects;
-    return projects.filter((project) => project.category === activeFilter);
-  }, [activeFilter]);
+  const selectedProject = useMemo(
+    () => projects.find((project) => project.slug === activeSlug) ?? projects[0],
+    [activeSlug]
+  );
 
   const projectDetails = projects.find((project) => project.slug === activeProject);
 
@@ -23,17 +23,21 @@ export default function ProjectsPage() {
       <Reveal><p className="eyebrow">Portfolio</p></Reveal>
       <Reveal><h1>A curated portfolio of residential and multi-family planning work across Rockland County.</h1></Reveal>
 
-      <div className="filtersRow" role="tablist" aria-label="Project filters">
-        {filters.map((filter) => (
-          <button
-            key={filter}
-            className={`filterChip ${activeFilter === filter ? 'active' : ''}`}
-            onClick={() => setActiveFilter(filter)}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
+      <div className="projectsSplit">
+        <div className="projectList">
+          {projects.map((project) => (
+            <button
+              key={project.slug}
+              className={`projectRow ${activeSlug === project.slug ? 'active' : ''}`}
+              onClick={() => setActiveSlug(project.slug)}
+              type="button"
+            >
+              <span>{project.category}</span>
+              <strong>{project.title}</strong>
+              <small>{project.location}</small>
+            </button>
+          ))}
+        </div>
 
       <div className="projectGrid editorialGrid">
         {filteredProjects.map((project, i) => (
@@ -47,9 +51,10 @@ export default function ProjectsPage() {
                 <h3>{project.title}</h3>
                 <span>{project.location}</span>
               </div>
+              <p>{selectedProject.summary}</p>
             </article>
           </Reveal>
-        ))}
+        )}
       </div>
 
       {projectDetails && (
