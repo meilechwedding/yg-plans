@@ -2,20 +2,13 @@ import Reveal from '@/components/Reveal';
 
 export default function AboutPage() {
   return (
-    <section className="section container pageTop">
-      <Reveal><p className="eyebrow">About YG plan</p></Reveal>
-      <Reveal><h1>Our studio blends architectural discipline with expressive modern luxury.</h1></Reveal>
-      <Reveal><p>From private residences to high-value mixed-use spaces, our work is guided by proportion, material intelligence, and contextual thinking. We design environments that are serene to inhabit and powerful to experience.</p></Reveal>
-      <div className="aboutGrid">
-        {[
-          ['Our Philosophy', 'Thoughtful planning and timeless composition create spaces that age with dignity.'],
-          ['Our Approach', 'Every brief is translated through rigorous concept exploration, technical precision, and collaborative delivery.'],
-          ['Our Standards', 'From first sketch to final detail, we maintain exacting standards across structure, craft, and experience.'],
-          ['What We Value', 'Clarity, restraint, and purpose-driven beauty that supports everyday life at the highest level.']
-        ].map(([title, text], i) => (
-          <Reveal key={title} delay={i * 0.08}>
-            <article className="serviceCard"><h3>{title}</h3><p>{text}</p></article>
-          </Reveal>
+    <section className="section container pageTop studioPage">
+      <Reveal><p className="eyebrow">Studio</p></Reveal>
+      <Reveal><h1>YG plan is a Monsey-based architecture and planning studio.</h1></Reveal>
+      <Reveal><p>We design homes, apartments, and multi-family spaces with clear layouts and build-ready documentation.</p></Reveal>
+      <div className="miniGrid">
+        {['Precise planning', 'Clean composition', 'Local process knowledge', 'Calm communication'].map((item, i) => (
+          <Reveal key={item} delay={i * 0.05}><div>{item}</div></Reveal>
         ))}
       </div>
     </section>
