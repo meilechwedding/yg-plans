@@ -18,6 +18,13 @@ export default function ProjectsPage() {
 
   const projectDetails = projects.find((project) => project.slug === activeProject);
 
+  const leadProject = filteredProjects[0];
+
+  const projectDetails = useMemo(() => {
+    if (!activeSlug) return null;
+    return projects.find((project) => project.slug === activeSlug) ?? null;
+  }, [activeSlug]);
+
   return (
     <section className="section container pageTop">
       <Reveal><p className="eyebrow">Portfolio</p></Reveal>
@@ -60,7 +67,7 @@ export default function ProjectsPage() {
       {projectDetails && (
         <div className="lightbox" onClick={() => setActiveProject(null)} role="dialog" aria-modal="true">
           <div className="lightboxInner" onClick={(e) => e.stopPropagation()}>
-            <button className="lightboxClose" onClick={() => setActiveProject(null)} aria-label="Close project preview">×</button>
+            <button type="button" className="lightboxClose" onClick={() => setActiveSlug(null)} aria-label="Close project preview">×</button>
             <div className="lightboxImage">
               <Image src={projectDetails.image} alt={projectDetails.title} fill sizes="100vw" />
             </div>

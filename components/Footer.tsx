@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { navLinks } from '@/data/content';
 
 export default function Footer() {
   return (
@@ -12,14 +11,9 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <p className="footerTitle">Navigate</p>
-          <div className="footerLinks">
-            {navLinks.map((l) => (
-              <Link key={l.href} href={l.href}>
-                {l.label}
-              </Link>
-            ))}
-          </div>
+          <p className="footerTitle">Studio</p>
+          <p>Monsey, NY</p>
+          <p>Serving Rockland County and surrounding areas</p>
         </div>
         <div>
           <p className="footerTitle">Contact</p>

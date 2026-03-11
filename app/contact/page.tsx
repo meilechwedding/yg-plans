@@ -14,6 +14,7 @@ const fields = [
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSent(true);
