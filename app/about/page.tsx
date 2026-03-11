@@ -2,19 +2,23 @@ import Reveal from '@/components/Reveal';
 
 export default function AboutPage() {
   return (
-    <section className="section container pageTop">
-      <Reveal><p className="eyebrow">About YG plan</p></Reveal>
-      <Reveal><h1>Our studio blends architectural discipline with expressive modern luxury.</h1></Reveal>
-      <Reveal><p>From private residences to high-value mixed-use spaces, our work is guided by proportion, material intelligence, and contextual thinking. We design environments that are serene to inhabit and powerful to experience.</p></Reveal>
-      <div className="aboutGrid">
+    <section className="section container pageTop studioPage">
+      <Reveal><p className="eyebrow">Studio</p></Reveal>
+      <Reveal><h1>A boutique planning and architecture studio in Monsey, New York.</h1></Reveal>
+      <Reveal><p>We design homes, additions, apartments, and multi-family properties with disciplined layout thinking and polished documentation.</p></Reveal>
+
+      <div className="aboutStats">
         {[
-          ['Our Philosophy', 'Thoughtful planning and timeless composition create spaces that age with dignity.'],
-          ['Our Approach', 'Every brief is translated through rigorous concept exploration, technical precision, and collaborative delivery.'],
-          ['Our Standards', 'From first sketch to final detail, we maintain exacting standards across structure, craft, and experience.'],
-          ['What We Value', 'Clarity, restraint, and purpose-driven beauty that supports everyday life at the highest level.']
-        ].map(([title, text], i) => (
-          <Reveal key={title} delay={i * 0.08}>
-            <article className="serviceCard"><h3>{title}</h3><p>{text}</p></article>
+          ['Local Focus', 'Monsey + Rockland County'],
+          ['Project Types', 'Home, renovation, apartment, multi-family'],
+          ['Approach', 'Calm process, precise planning'],
+          ['Outcome', 'Build-ready sets with design clarity']
+        ].map(([label, value], i) => (
+          <Reveal key={label} delay={i * 0.05}>
+            <article>
+              <p>{label}</p>
+              <h3>{value}</h3>
+            </article>
           </Reveal>
         ))}
       </div>

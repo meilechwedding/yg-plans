@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 
 export const metadata: Metadata = {
-  title: 'YG plan | Premium Architecture Studio',
-  description: 'Luxury architecture, planning, and design studio crafting refined spatial experiences.'
+  title: 'YG plan | Monsey Architecture & Planning',
+  description: 'Architecture and planning for homes and multi-family projects in Monsey and Rockland County.'
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

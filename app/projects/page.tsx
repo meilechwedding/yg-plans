@@ -5,32 +5,36 @@ import { useMemo, useState } from 'react';
 import Reveal from '@/components/Reveal';
 import { projects } from '@/data/content';
 
-const filters = ['All', 'Residential', 'Multi-Family', 'Modern Villa', 'Custom Home'] as const;
+const filters = ['All', 'Home', 'Apartment', 'Multi-Family', 'Renovation'] as const;
+
+type Filter = (typeof filters)[number];
 
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>('All');
-  const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [activeFilter, setActiveFilter] = useState<Filter>('All');
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'All') return projects;
     return projects.filter((project) => project.category === activeFilter);
   }, [activeFilter]);
 
+  const leadProject = filteredProjects[0];
+
+  const projectDetails = useMemo(() => {
+    if (!activeSlug) return null;
+    return projects.find((project) => project.slug === activeSlug) ?? null;
+  }, [activeSlug]);
+
   return (
     <section className="section container pageTop">
-      <Reveal><p className="eyebrow">Portfolio</p></Reveal>
-      <Reveal><h1>A curated selection of YG plan residential and multi-family work.</h1></Reveal>
-      <Reveal>
-        <p className="portfolioLead">
-          These projects reflect your shared portfolio direction—clear frontage composition, disciplined geometry,
-          and premium material balance across custom homes and larger residential typologies.
-        </p>
-      </Reveal>
+      <Reveal><p className="eyebrow">Projects</p></Reveal>
+      <Reveal><h1>Curated homes, apartments, and multi-family planning projects.</h1></Reveal>
 
       <div className="filtersRow" role="tablist" aria-label="Project filters">
         {filters.map((filter) => (
           <button
             key={filter}
+            type="button"
             className={`filterChip ${activeFilter === filter ? 'active' : ''}`}
             onClick={() => setActiveFilter(filter)}
           >
@@ -39,10 +43,26 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      <div className="projectGrid">
-        {filteredProjects.map((project, i) => (
-          <Reveal key={project.title} delay={i * 0.05}>
-            <article className="projectCard tall" onClick={() => setActiveProject(i)}>
+      {leadProject && (
+        <Reveal>
+          <article className="projectLead" onClick={() => setActiveSlug(leadProject.slug)}>
+            <div className="projectLeadImage">
+              <Image src={leadProject.image} alt={leadProject.title} fill sizes="100vw" />
+            </div>
+            <div className="projectLeadMeta">
+              <p>{leadProject.category}</p>
+              <h3>{leadProject.title}</h3>
+              <span>{leadProject.location}</span>
+              <small>{leadProject.summary}</small>
+            </div>
+          </article>
+        </Reveal>
+      )}
+
+      <div className="projectEditorialGrid">
+        {filteredProjects.slice(1).map((project, i) => (
+          <Reveal key={project.slug} delay={i * 0.05}>
+            <article className="projectCard" onClick={() => setActiveSlug(project.slug)}>
               <div className="projectImageWrap">
                 <Image src={project.image} alt={project.title} fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
@@ -56,23 +76,18 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      {activeProject !== null && (
-        <div className="lightbox" onClick={() => setActiveProject(null)} role="dialog" aria-modal="true">
+      {projectDetails && (
+        <div className="lightbox" onClick={() => setActiveSlug(null)} role="dialog" aria-modal="true">
           <div className="lightboxInner" onClick={(e) => e.stopPropagation()}>
-            <button className="lightboxClose" onClick={() => setActiveProject(null)} aria-label="Close project preview">×</button>
+            <button type="button" className="lightboxClose" onClick={() => setActiveSlug(null)} aria-label="Close project preview">×</button>
             <div className="lightboxImage">
-              <Image
-                src={filteredProjects[activeProject].image}
-                alt={filteredProjects[activeProject].title}
-                fill
-                sizes="100vw"
-              />
+              <Image src={projectDetails.image} alt={projectDetails.title} fill sizes="100vw" />
             </div>
             <div className="lightboxMeta">
-              <p>{filteredProjects[activeProject].category}</p>
-              <h3>{filteredProjects[activeProject].title}</h3>
-              <span>{filteredProjects[activeProject].description}</span>
-              <small>{filteredProjects[activeProject].scope}</small>
+              <p>{projectDetails.category}</p>
+              <h3>{projectDetails.title}</h3>
+              <span>{projectDetails.location}</span>
+              <small>{projectDetails.summary}</small>
             </div>
           </div>
         </div>

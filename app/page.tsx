@@ -1,104 +1,65 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import Reveal from '@/components/Reveal';
+import BlueprintHero from '@/components/BlueprintHero';
+import HorizontalProjects from '@/components/HorizontalProjects';
+import ScrollGuide from '@/components/ScrollGuide';
 import { projects, services } from '@/data/content';
 
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="heroOverlay" />
-        <div className="container heroInner">
-          <Reveal>
-            <p className="eyebrow">Premium Architecture / Planning / Design</p>
-            <h1>Architecture shaped by vision, precision, and timeless design.</h1>
-            <p className="heroLead">
-              YG plan creates luxury residential and commercial environments where spatial intelligence meets refined craft.
-            </p>
-            <div className="heroActions">
-              <Link href="/projects" className="ctaButton">View Projects</Link>
-              <Link href="/contact" className="ghostButton">Start Your Project</Link>
-            </div>
-          </Reveal>
-        </div>
-        <div className="portfolioCtaWrap">
-          <Link href="/projects" className="ghostButton">Explore Full Portfolio</Link>
-        </div>
-      </section>
+      <BlueprintHero />
 
-      <section className="section container introSplit">
+      <section className="section sectionIntro container">
         <Reveal>
-          <h2>Designing spaces with clarity, elegance, and intention.</h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p>
-            We are a multidisciplinary architecture studio focused on luxury residential design, interior planning, and development strategy.
-            Every project is approached as a design object—structured with rigor, detailed with care, and delivered with confidence.
-          </p>
+          <p className="eyebrow">YG plan</p>
+          <h2>Precision-led planning for modern homes and multi-family spaces.</h2>
         </Reveal>
       </section>
 
-      <section className="section container">
-        <Reveal><h2>Featured Projects</h2></Reveal>
-        <div className="projectGrid">
-          {projects.slice(0, 6).map((project, i) => (
-            <Reveal key={project.title} delay={i * 0.08}>
-              <article className="projectCard">
-                <div className="projectImageWrap">
-                  <Image src={project.image} alt={project.title} fill sizes="(max-width: 900px) 100vw, 50vw" />
-                </div>
-                <div className="projectMeta">
-                  <p>{project.category}</p>
-                  <h3>{project.title}</h3>
-                  <span>{project.location}</span>
-                </div>
+      <section className="section sectionProjects">
+        <div className="container sectionHead">
+          <Reveal><p className="eyebrow">Selected Work</p></Reveal>
+          <Reveal><h2>Curated residential and apartment planning in Rockland County.</h2></Reveal>
+        </div>
+        <HorizontalProjects items={projects} />
+      </section>
+
+      <section className="section container sectionServices">
+        <div className="sectionHead">
+          <Reveal><p className="eyebrow">Services</p></Reveal>
+          <Reveal><h2>Clear scope. Clean execution.</h2></Reveal>
+        </div>
+        <div className="serviceList">
+          {services.map((service, i) => (
+            <Reveal key={service} delay={i * 0.05}>
+              <article className="serviceItem">
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                <h3>{service}</h3>
               </article>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="section sectionAlt">
-        <div className="container">
-          <Reveal><h2>Services</h2></Reveal>
-          <div className="serviceGrid">
-            {services.map((service, i) => (
-              <Reveal key={service.title} delay={i * 0.06}>
-                <article className="serviceCard">
-                  <h3>{service.title}</h3>
-                  <p>{service.summary}</p>
-                </article>
-              </Reveal>
+      <section className="section container sectionProcess">
+        <div className="sectionHead">
+          <Reveal><p className="eyebrow">Process</p></Reveal>
+          <Reveal><h2>Measured from first brief to permit set.</h2></Reveal>
+        </div>
+        <ScrollGuide>
+          <div className="processSteps">
+            {['Discovery', 'Planning', 'Design Development', 'Documentation'].map((step, i) => (
+              <Reveal key={step} delay={i * 0.07}><p>{step}</p></Reveal>
             ))}
           </div>
-        </div>
+        </ScrollGuide>
       </section>
 
-      <section className="section container processBand">
-        <Reveal>
-          <h2>Our Process</h2>
-          <div className="timeline">
-            {['Discovery', 'Concept', 'Development', 'Delivery'].map((step) => (
-              <div key={step}><span>{step}</span></div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="section container testimonials">
-        <Reveal><h2>Trusted by discerning clients and ambitious developers.</h2></Reveal>
-        <div className="quoteGrid">
-          <Reveal><blockquote>“YG plan transformed our brief into a deeply considered home with remarkable calm and presence.”</blockquote></Reveal>
-          <Reveal delay={0.1}><blockquote>“Their architectural clarity and detail discipline made every decision feel intentional and assured.”</blockquote></Reveal>
-        </div>
-      </section>
-
-      <section className="section ctaStrip">
-        <div className="container">
-          <Reveal>
-            <h2>Let’s design something exceptional.</h2>
-            <Link href="/contact" className="ctaButton">Book a Consultation</Link>
-          </Reveal>
+      <section className="section sectionCta">
+        <div className="container ctaPanel">
+          <h2>Let’s plan your next property.</h2>
+          <Link href="/contact" className="ctaButton">Start Your Project</Link>
         </div>
       </section>
     </>
