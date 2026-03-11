@@ -8,7 +8,7 @@ import { Project } from '@/data/content';
 export default function HorizontalProjects({ items }: { items: Project[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-64%']);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-58%']);
 
   return (
     <section className="railSection" ref={ref}>
@@ -17,7 +17,7 @@ export default function HorizontalProjects({ items }: { items: Project[] }) {
           {items.map((item) => (
             <article key={item.slug} className="railPanel">
               <div className="railImage">
-                <Image src={item.image} alt={item.title} fill sizes="75vw" />
+                <Image src={item.image} alt={item.title} fill sizes="70vw" />
               </div>
               <div className="railMeta">
                 <p>{item.category}</p>

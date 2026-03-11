@@ -5,8 +5,10 @@ export default function Footer() {
     <footer className="siteFooter">
       <div className="container footerGrid">
         <div>
-          <p className="footerBrand">YG plan</p>
-          <p>Monsey-based planning and architecture studio for residential and multi-family projects.</p>
+          <Image src="/yg-plan-logo.svg" alt="YG plan logo" width={140} height={50} />
+          <p className="footerLead">
+            A Monsey-based architecture and planning studio designing thoughtful homes, renovations, and multi-family spaces across Rockland County.
+          </p>
         </div>
         <div>
           <p className="footerTitle">Studio</p>
@@ -15,9 +17,8 @@ export default function Footer() {
         </div>
         <div>
           <p className="footerTitle">Contact</p>
-          <p>hello@ygplanny.com</p>
-          <p>(845) 000-1948</p>
-          <Link href="/contact">Start an inquiry</Link>
+          <p>Team: Yidel Grunberger, Tuli Strasser</p>
+          <p>845-263-6855</p>
         </div>
       </div>
     </footer>

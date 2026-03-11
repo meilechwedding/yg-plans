@@ -8,58 +8,42 @@ import Magnetic from '@/components/Magnetic';
 export default function BlueprintHero() {
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 55, damping: 20 });
-  const y = useSpring(my, { stiffness: 55, damping: 20 });
+  const x = useSpring(mx, { stiffness: 60, damping: 20 });
+  const y = useSpring(my, { stiffness: 60, damping: 20 });
 
   const onMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    mx.set((e.clientX - rect.left - rect.width / 2) * 0.012);
-    my.set((e.clientY - rect.top - rect.height / 2) * 0.012);
+    mx.set((e.clientX - rect.width / 2 - rect.left) * 0.01);
+    my.set((e.clientY - rect.height / 2 - rect.top) * 0.01);
   };
 
   return (
     <section className="hero" onMouseMove={onMove}>
       <motion.div className="heroImage" style={{ x, y }}>
-        <Image
-          src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=2400&q=80"
-          alt="Premium residential architecture"
-          fill
-          priority
-          sizes="100vw"
-        />
+        <Image src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2200&q=80" alt="Modern residential architecture" fill priority sizes="100vw" />
       </motion.div>
       <div className="heroShade" />
-      <svg className="heroDraft" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
-        {[6, 22, 41, 70, 92].map((xLine, i) => (
+      <svg className="blueprint" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
+        {[[8,10,8,90],[25,5,25,95],[74,6,74,95],[90,15,90,88],[6,20,92,20],[10,48,95,48],[6,75,88,75]].map((line, i) => (
           <motion.line
-            key={`v-${xLine}`}
-            x1={xLine}
-            y1="4"
-            x2={xLine}
-            y2="96"
+            key={i}
+            x1={line[0]}
+            y1={line[1]}
+            x2={line[2]}
+            y2={line[3]}
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.3, delay: i * 0.11, ease: [0.22, 1, 0.36, 1] }}
-          />
-        ))}
-        {[14, 34, 63, 86].map((yLine, i) => (
-          <motion.line
-            key={`h-${yLine}`}
-            x1="4"
-            y1={yLine}
-            x2="96"
-            y2={yLine}
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.3, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.12 * i, ease: 'easeOut' }}
           />
         ))}
       </svg>
-
+      <motion.div className="heroMonogram" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 1 }}>
+        YG
+      </motion.div>
       <div className="container heroContent">
-        <p className="heroKicker">Monsey, New York</p>
-        <h1>Planning and architecture for refined residential living.</h1>
-        <span>Custom homes, apartments, and multi-family planning across Rockland County.</span>
+        <p>Monsey, NY</p>
+        <h1>Modern planning for refined living.</h1>
+        <span>Architecture, planning, and spatial design for homes and multi-family projects in Rockland County.</span>
         <div className="heroCtas">
           <Magnetic><Link href="/projects" className="ctaButton">View Projects</Link></Magnetic>
           <Magnetic><Link href="/contact" className="ghostButton">Start Your Project</Link></Magnetic>

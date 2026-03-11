@@ -2,23 +2,25 @@ import Reveal from '@/components/Reveal';
 
 export default function AboutPage() {
   return (
-    <section className="section container pageTop studioPage">
-      <Reveal><p className="eyebrow">Studio</p></Reveal>
-      <Reveal><h1>A boutique planning and architecture studio in Monsey, New York.</h1></Reveal>
-      <Reveal><p>We design homes, additions, apartments, and multi-family properties with disciplined layout thinking and polished documentation.</p></Reveal>
-
-      <div className="aboutStats">
+    <section className="section container pageTop">
+      <Reveal><p className="eyebrow">About YG plan</p></Reveal>
+      <Reveal><h1>A boutique Monsey studio focused on planning-led architecture with calm precision.</h1></Reveal>
+      <Reveal>
+        <p>
+          YG plan is an architecture and planning practice serving homeowners, families, and developers throughout
+          Monsey and Rockland County. We specialize in clear planning logic, thoughtful design development,
+          and polished documentation that supports real-world building outcomes.
+        </p>
+      </Reveal>
+      <div className="aboutGrid">
         {[
-          ['Local Focus', 'Monsey + Rockland County'],
-          ['Project Types', 'Home, renovation, apartment, multi-family'],
-          ['Approach', 'Calm process, precise planning'],
-          ['Outcome', 'Build-ready sets with design clarity']
-        ].map(([label, value], i) => (
-          <Reveal key={label} delay={i * 0.05}>
-            <article>
-              <p>{label}</p>
-              <h3>{value}</h3>
-            </article>
+          ['Studio Focus', 'Custom homes, renovations, additions, and multi-family planning rooted in local context and long-term livability.'],
+          ['Design Philosophy', 'Proportion, daylight, and circulation guide every plan so the finished space feels intuitive and enduring.'],
+          ['Process Standards', 'Structured timelines, clear communication, and disciplined drawing packages at every stage.'],
+          ['Local Relevance', 'We work with the realities of Monsey-area properties, neighborhood character, and municipal requirements.']
+        ].map(([title, text], i) => (
+          <Reveal key={title} delay={i * 0.08}>
+            <article className="serviceCard"><h3>{title}</h3><p>{text}</p></article>
           </Reveal>
         ))}
       </div>

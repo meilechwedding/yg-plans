@@ -5,13 +5,13 @@ export default function ServicesPage() {
   return (
     <section className="section container pageTop">
       <Reveal><p className="eyebrow">Services</p></Reveal>
-      <Reveal><h1>Residential planning services with clear direction and elegant execution.</h1></Reveal>
-      <div className="serviceList serviceListTight">
+      <Reveal><h1>Architecture and planning services tailored to Monsey and Rockland County projects.</h1></Reveal>
+      <div className="serviceRows">
         {services.map((service, i) => (
-          <Reveal key={service} delay={i * 0.04}>
-            <article className="serviceItem">
-              <span>{String(i + 1).padStart(2, '0')}</span>
-              <h3>{service}</h3>
+          <Reveal key={service.title} delay={i * 0.05}>
+            <article className="serviceRow">
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
             </article>
           </Reveal>
         ))}

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/data/content';
+import Magnetic from '@/components/Magnetic';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,29 +22,19 @@ export default function Header() {
   return (
     <header className={`siteHeader ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navWrap">
-        <Link href="/" aria-label="YG plan home" className="brandMark">
-          <Image src="/yg-plan-logo.svg" alt="YG plan logo" width={130} height={44} priority />
-        </Link>
-
+        <Link href="/" aria-label="YG plan home"><Image src="/yg-plan-logo.svg" alt="YG plan logo" width={138} height={48} priority /></Link>
         <nav className={`mainNav ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={pathname === link.href ? 'active' : ''}
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link key={link.href} href={link.href} className={pathname === link.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="navCta" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link className="ctaButton" href="/contact" onClick={() => setMenuOpen(false)}>
+            Start Your Project
+          </Link>
         </nav>
 
-        <button
-          className={`menuToggle ${menuOpen ? 'open' : ''}`}
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
+        <button className={`menuToggle ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
           <span />
           <span />
         </button>

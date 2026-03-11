@@ -1,22 +1,22 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import Reveal from '@/components/Reveal';
 import { projects } from '@/data/content';
 
-const filters = ['All', 'Home', 'Apartment', 'Multi-Family', 'Renovation'] as const;
-
-type Filter = (typeof filters)[number];
+const filters = ['All', 'Custom Home', 'Renovation', 'Multi-Family', 'Interior Planning'] as const;
 
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] = useState<Filter>('All');
-  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>('All');
+  const [activeProject, setActiveProject] = useState<string | null>(null);
 
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === 'All') return projects;
-    return projects.filter((project) => project.category === activeFilter);
-  }, [activeFilter]);
+  const selectedProject = useMemo(
+    () => projects.find((project) => project.slug === activeSlug) ?? projects[0],
+    [activeSlug]
+  );
+
+  const projectDetails = projects.find((project) => project.slug === activeProject);
 
   const leadProject = filteredProjects[0];
 
@@ -27,42 +27,29 @@ export default function ProjectsPage() {
 
   return (
     <section className="section container pageTop">
-      <Reveal><p className="eyebrow">Projects</p></Reveal>
-      <Reveal><h1>Curated homes, apartments, and multi-family planning projects.</h1></Reveal>
+      <Reveal><p className="eyebrow">Portfolio</p></Reveal>
+      <Reveal><h1>A curated portfolio of residential and multi-family planning work across Rockland County.</h1></Reveal>
 
-      <div className="filtersRow" role="tablist" aria-label="Project filters">
-        {filters.map((filter) => (
-          <button
-            key={filter}
-            type="button"
-            className={`filterChip ${activeFilter === filter ? 'active' : ''}`}
-            onClick={() => setActiveFilter(filter)}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
+      <div className="projectsSplit">
+        <div className="projectList">
+          {projects.map((project) => (
+            <button
+              key={project.slug}
+              className={`projectRow ${activeSlug === project.slug ? 'active' : ''}`}
+              onClick={() => setActiveSlug(project.slug)}
+              type="button"
+            >
+              <span>{project.category}</span>
+              <strong>{project.title}</strong>
+              <small>{project.location}</small>
+            </button>
+          ))}
+        </div>
 
-      {leadProject && (
-        <Reveal>
-          <article className="projectLead" onClick={() => setActiveSlug(leadProject.slug)}>
-            <div className="projectLeadImage">
-              <Image src={leadProject.image} alt={leadProject.title} fill sizes="100vw" />
-            </div>
-            <div className="projectLeadMeta">
-              <p>{leadProject.category}</p>
-              <h3>{leadProject.title}</h3>
-              <span>{leadProject.location}</span>
-              <small>{leadProject.summary}</small>
-            </div>
-          </article>
-        </Reveal>
-      )}
-
-      <div className="projectEditorialGrid">
-        {filteredProjects.slice(1).map((project, i) => (
+      <div className="projectGrid editorialGrid">
+        {filteredProjects.map((project, i) => (
           <Reveal key={project.slug} delay={i * 0.05}>
-            <article className="projectCard" onClick={() => setActiveSlug(project.slug)}>
+            <article className="projectCard tall" onClick={() => setActiveProject(project.slug)}>
               <div className="projectImageWrap">
                 <Image src={project.image} alt={project.title} fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
@@ -71,13 +58,14 @@ export default function ProjectsPage() {
                 <h3>{project.title}</h3>
                 <span>{project.location}</span>
               </div>
+              <p>{selectedProject.summary}</p>
             </article>
           </Reveal>
-        ))}
+        )}
       </div>
 
       {projectDetails && (
-        <div className="lightbox" onClick={() => setActiveSlug(null)} role="dialog" aria-modal="true">
+        <div className="lightbox" onClick={() => setActiveProject(null)} role="dialog" aria-modal="true">
           <div className="lightboxInner" onClick={(e) => e.stopPropagation()}>
             <button type="button" className="lightboxClose" onClick={() => setActiveSlug(null)} aria-label="Close project preview">×</button>
             <div className="lightboxImage">
@@ -87,11 +75,14 @@ export default function ProjectsPage() {
               <p>{projectDetails.category}</p>
               <h3>{projectDetails.title}</h3>
               <span>{projectDetails.location}</span>
-              <small>{projectDetails.summary}</small>
+              <small>{projectDetails.description}</small>
+              <small><strong>Scope:</strong> {projectDetails.scope}</small>
+              <small><strong>Design Notes:</strong> {projectDetails.designNotes}</small>
             </div>
-          </div>
-        </div>
-      )}
+            <p>{selected.summary}</p>
+          </article>
+        </Reveal>
+      </div>
     </section>
   );
 }
