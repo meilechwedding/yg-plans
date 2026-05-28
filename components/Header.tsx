@@ -19,11 +19,24 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   return (
     <header className={`siteHeader ${scrolled ? 'scrolled' : ''}`}>
+      <button
+        className={`navScrim ${menuOpen ? 'open' : ''}`}
+        aria-label="Close menu"
+        tabIndex={menuOpen ? 0 : -1}
+        onClick={() => setMenuOpen(false)}
+      />
       <div className="container navWrap">
         <Link href="/" aria-label="YG plan home"><Image src="/yg-plan-logo.svg" alt="YG plan logo" width={138} height={48} priority /></Link>
-        <nav className={`mainNav ${menuOpen ? 'open' : ''}`}>
+        <nav id="primary-navigation" className={`mainNav ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className={pathname === link.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>
               {link.label}
@@ -34,7 +47,13 @@ export default function Header() {
           </Link>
         </nav>
 
-        <button className={`menuToggle ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
+        <button
+          className={`menuToggle ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+        >
           <span />
           <span />
         </button>

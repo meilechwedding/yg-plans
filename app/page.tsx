@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import SplitText from '@/components/SplitText';
 import PlanLines from '@/components/PlanLines';
+import HorizontalProjects from '@/components/HorizontalProjects';
 import { projects, services } from '@/data/content';
 
 export default function Home() {
@@ -11,8 +13,8 @@ export default function Home() {
         <PlanLines />
         <div className="heroMedia">
           <Image
-            src="https://images.unsplash.com/photo-1464146072230-91cabc968266?auto=format&fit=crop&w=2200&q=80"
-            alt="Modern architectural residence"
+            src="/yg-architecture-set.png"
+            alt="YG plan architectural home and community building studies"
             fill
             priority
             sizes="100vw"
@@ -20,18 +22,26 @@ export default function Home() {
         </div>
         <div className="heroOverlay" />
         <div className="container heroInner">
-          <p className="eyebrow">Monsey, NY · Architecture & Planning Studio</p>
-          <SplitText text="Architectural planning with precision, clarity, and timeless intent." />
+          <p className="eyebrow">Monsey, NY - Homes - Shuls - Filing</p>
+          <SplitText text="Beautiful plans that build." />
           <Reveal delay={0.35}>
             <p className="heroLead">
-              YG plan partners with homeowners and developers across Monsey and Rockland County to shape custom homes,
-              renovations, and multi-family projects with refined process and design confidence.
+              YG plan creates clean, buildable architectural plans for families, builders, developers, and community
+              projects across Monsey and Rockland County. The work is polished, practical, and clear enough to move
+              from first conversation to filing and builder handoff.
             </p>
           </Reveal>
           <Reveal delay={0.45}>
             <div className="heroActions">
-              <Link href="/projects" className="ctaButton">View Projects</Link>
-              <Link href="/contact" className="ghostButton">Start Your Project</Link>
+              <Link href="/contact" className="ctaButton">Start an Inquiry</Link>
+              <Link href="/projects" className="ghostButton">View Selected Work</Link>
+            </div>
+          </Reveal>
+          <Reveal delay={0.55}>
+            <div className="heroProof">
+              <div><strong>8+</strong><span>years planning local residential and community projects</span></div>
+              <div><strong>6</strong><span>core services from homes and shuls through filing</span></div>
+              <div><strong>2</strong><span>principals guiding each project directly</span></div>
             </div>
           </Reveal>
         </div>
@@ -39,8 +49,11 @@ export default function Home() {
 
       <section className="section container localIntro">
         <Reveal>
-          <p className="eyebrow">Local Trust</p>
-          <h2>Serving Monsey and Rockland County with premium planning for homes, renovations, and multi-family properties.</h2>
+          <p className="eyebrow">Local Knowledge</p>
+          <h2>
+            Serving Monsey and Rockland County with premium planning for homes, shuls, renovations, and multi-family
+            properties.
+          </h2>
         </Reveal>
       </section>
 
@@ -96,7 +109,7 @@ export default function Home() {
       <section className="section ctaMinimal">
         <div className="container">
           <Reveal>
-            <h2>Let’s plan your next project.</h2>
+            <h2>Let&apos;s plan your next project.</h2>
             <p>Tell us about your property, vision, or renovation goals and our studio will respond promptly.</p>
             <Link href="/contact" className="ctaButton">Start Your Project</Link>
           </Reveal>

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -19,7 +19,12 @@ export default function Footer() {
           <p className="footerTitle">Contact</p>
           <p>Team: Yidel Grunberger, Tuli Strasser</p>
           <p>845-263-6855</p>
+          <p>tuli@ygplans.com</p>
         </div>
+      </div>
+      <div className="container footerBottom">
+        <span>&copy; {new Date().getFullYear()} YG plan. All rights reserved.</span>
+        <span>Designed and planned in Monsey, NY.</span>
       </div>
     </footer>
   );

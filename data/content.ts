@@ -10,7 +10,7 @@ export const navLinks = [
 export type Project = {
   slug: string;
   title: string;
-  category: 'Custom Home' | 'Renovation' | 'Multi-Family' | 'Interior Planning';
+  category: 'Custom Home' | 'Shul / Community' | 'Semi-Attached' | 'Multi-Family' | 'Renovation';
   location: string;
   image: string;
   description: string;
@@ -20,70 +20,80 @@ export type Project = {
 
 export const services = [
   {
-    title: 'Architectural Planning',
-    summary: 'Site-responsive planning that balances family lifestyle, zoning constraints, and long-term property value.'
-  },
-  {
     title: 'Custom Home Design',
-    summary: 'Ground-up home design shaped by proportion, circulation, and detail discipline from concept through documentation.'
+    summary: 'Ground-up homes with refined elevations, family flow, daylight, privacy, and practical daily use planned together.'
   },
   {
-    title: 'Renovation & Addition Planning',
-    summary: 'Strategic upgrades and expansions that modernize existing homes while protecting continuity and neighborhood context.'
+    title: 'Semi-Attached & Townhomes',
+    summary: 'Paired layouts that respect privacy, maximize the lot, and keep the street elevation unified and calm.'
   },
   {
-    title: 'Multi-Family Planning',
-    summary: 'Efficient and elegant residential layouts for duplexes and multi-family properties across Monsey and Rockland County.'
+    title: 'Apartment Buildings',
+    summary: 'Efficient unit planning, clear cores, egress awareness, and residential-scale facades that feel considered.'
   },
   {
-    title: 'Interior Space Planning',
-    summary: 'Room-by-room planning that improves flow, daylight, storage, and livability without sacrificing visual calm.'
+    title: 'Shul & Community Buildings',
+    summary: 'Layouts for sanctuary flow, lobby movement, support rooms, ezras nashim, and future growth.'
   },
   {
-    title: 'Permit & Filing Support',
-    summary: 'Clear documentation packages and submission guidance to streamline municipal review and approvals.'
+    title: 'Renovations & Additions',
+    summary: 'Existing homes reworked with better hierarchy, cleaner circulation, and additions that feel intentional.'
+  },
+  {
+    title: 'Permits & Filing',
+    summary: 'Organized drawing packages for review, coordination, revisions, and builder handoff.'
   }
 ];
 
 export const projects: Project[] = [
   {
-    slug: 'saddle-river-residence',
-    title: 'Saddle River Residence',
+    slug: 'family-residence-study',
+    title: 'Family Residence Study',
     category: 'Custom Home',
     location: 'Monsey, NY',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80',
-    description: 'A contemporary family residence composed around layered stone, natural oak, and carefully framed daylight.',
-    scope: 'Planning, façade development, full documentation, interior spatial planning.',
-    designNotes: 'The plan was organized around a central circulation spine to separate private family zones from entertaining spaces.'
+    image: '/yg-architecture-set.png',
+    description: 'A refined home concept balancing formal curb appeal, daily family flow, storage, kitchen life, privacy, and builder-ready documentation.',
+    scope: 'Concept planning, floor plans, elevations, documentation direction.',
+    designNotes: 'The architecture stays calm while the plan works hard behind it for everyday family use.'
   },
   {
-    slug: 'maple-court-renovation',
-    title: 'Maple Court Renovation',
-    category: 'Renovation',
-    location: 'Chestnut Ridge, NY',
-    image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80',
-    description: 'A full-home renovation and rear addition that brought clarity, storage, and light to a growing household.',
-    scope: 'Existing-condition study, addition planning, permit set, interior layout redesign.',
-    designNotes: 'Ceiling transitions and aligned openings were used to make the addition feel fully integrated with the original structure.'
+    slug: 'community-building-study',
+    title: 'Community Building Study',
+    category: 'Shul / Community',
+    location: 'Rockland County, NY',
+    image: '/yg-architecture-set.png',
+    description: 'Planning for sanctuary clarity, lobby circulation, support spaces, ezras nashim, and dignified local presence.',
+    scope: 'Program planning, circulation, support rooms, phased growth.',
+    designNotes: 'Busy-day movement and future flexibility are planned early so the building can serve the kehilla well.'
   },
   {
-    slug: 'grandview-duplex',
-    title: 'Grandview Duplex',
-    category: 'Multi-Family',
+    slug: 'paired-family-homes',
+    title: 'Paired Family Homes',
+    category: 'Semi-Attached',
     location: 'Spring Valley, NY',
-    image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1600&q=80',
-    description: 'A premium duplex concept focused on privacy, efficient unit planning, and a cohesive architectural language.',
-    scope: 'Lot strategy, unit planning, elevation studies, municipal submission support.',
-    designNotes: 'Mirrored volumes were offset to increase privacy and create stronger natural light for both units.'
+    image: '/yg-architecture-set.png',
+    description: 'Two homes planned together so density, privacy, parking, stairs, entries, and facade rhythm work as one composition.',
+    scope: 'Lot strategy, paired layouts, facade rhythm, municipal submission support.',
+    designNotes: 'Mirrored volumes are tuned for privacy and entry clarity instead of feeling copied and pasted.'
   },
   {
-    slug: 'hempstead-interiors',
-    title: 'Hempstead Interior Replan',
-    category: 'Interior Planning',
+    slug: 'residential-scale-apartments',
+    title: 'Residential-Scale Apartments',
+    category: 'Multi-Family',
+    location: 'Ramapo, NY',
+    image: '/yg-architecture-set.png',
+    description: 'Efficient stacking and circulation with a warmer facade language than typical small multifamily work.',
+    scope: 'Unit mix, common circulation, egress-aware planning, street-facing scale.',
+    designNotes: 'The plan focuses on efficiency while keeping the building grounded in a residential neighborhood scale.'
+  },
+  {
+    slug: 'existing-home-reworked',
+    title: 'Existing Home Reworked',
+    category: 'Renovation',
     location: 'Airmont, NY',
-    image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80',
-    description: 'A full interior spatial replan focused on circulation, kitchen flow, and family gathering spaces.',
-    scope: 'Interior zoning, kitchen planning, lighting layout guidance, finish direction.',
-    designNotes: 'Sightlines between kitchen, dining, and informal lounge were calibrated to support daily family routines.'
+    image: '/yg-architecture-set.png',
+    description: 'A study in adding useful space without making the house feel patched on: better hierarchy, clearer rooms, and a calmer exterior.',
+    scope: 'Existing-condition planning, addition massing, kitchen and room flow fixes.',
+    designNotes: 'Connections between old and new are resolved so the addition feels intentional.'
   }
 ];
