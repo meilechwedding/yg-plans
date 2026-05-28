@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selected Work — YG PLAN · Monsey, NY</title>
+<meta name="description" content="A curated archive of recent YG PLAN projects: custom homes, multifamily, shuls and mosdos, semi-attached and renovations in Monsey and Rockland County." />
+<link rel="canonical" href="https://yg-plans-repo.vercel.app/work">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Selected Work — YG PLAN · Monsey, NY">
+<meta property="og:description" content="A curated archive of recent YG PLAN projects: custom homes, multifamily, shuls and mosdos, semi-attached and renovations in Monsey and Rockland County.">
+<meta property="og:image" content="https://yg-plans-repo.vercel.app/assets/og-image.jpg">
+<meta property="og:url" content="https://yg-plans-repo.vercel.app/work">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YG PLAN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Selected Work — YG PLAN · Monsey, NY">
+<meta name="twitter:description" content="A curated archive of recent YG PLAN projects: custom homes, multifamily, shuls and mosdos, semi-attached and renovations in Monsey and Rockland County.">
+<meta name="twitter:image" content="https://yg-plans-repo.vercel.app/assets/og-image.jpg">
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260528-fix" />
+<style>
+/* ───── Work archive page-specific ───── */
+.work-hero {
+  padding-top: 180px;
+  padding-bottom: 80px;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+@media (max-width: 900px) { .work-hero { padding-top: 140px; padding-bottom: 56px; } }
+.work-hero .mono-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(31, 29, 27, 0.45);
+  margin-bottom: 24px;
+}
+.work-hero .mono-eyebrow .sep { margin: 0 10px; color: var(--hair-strong); }
+.work-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(56px, 8vw, 128px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin: 0 0 32px;
+  text-wrap: balance;
+}
+.work-hero p {
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: var(--ink-70);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+.work-meta {
+  margin-top: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--hair);
+}
+.work-meta .item { display: flex; flex-direction: column; gap: 6px; }
+.work-meta .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.work-meta .v {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 1.8vw, 24px);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+/* ───── Category groups ───── */
+.archive {
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-bottom: 120px;
+}
+.cat {
+  padding: 80px 0 24px;
+  border-top: 1px solid var(--hair);
+}
+.cat:first-of-type { border-top: 0; padding-top: 24px; }
+.cat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.cat-head .left { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+.cat-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cat-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 3.2vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.cat-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+/* ───── Project tiles (archive grid) ───── */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .proj-grid { grid-template-columns: 1fr; }
+}
+.proj {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--paper);
+  isolation: isolate;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  border: 0;
+  padding: 0;
+}
+.proj.w-12 { grid-column: span 12; aspect-ratio: 16/8; }
+.proj.w-8 { grid-column: span 8; aspect-ratio: 16/10; }
+.proj.w-6 { grid-column: span 6; }
+.proj.w-4 { grid-column: span 4; aspect-ratio: 1/1; }
+@media (max-width: 900px) {
+  .proj.w-12, .proj.w-8, .proj.w-6, .proj.w-4 { grid-column: 1; aspect-ratio: 4/3; }
+}
+.proj img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+  filter: saturate(0.94) contrast(1.02);
+  transition: transform 1.6s var(--ease-out);
+}
+.proj:hover img { transform: scale(1.04); }
+.proj::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31, 29, 27, 0) 50%, rgba(31, 29, 27, 0.55) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+}
+.proj:hover::after { opacity: 1; }
+.proj::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, transparent 0%, rgba(200, 81, 46, 0.6) 50%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+  z-index: 3;
+}
+.proj:hover::before { opacity: 1; }
+.proj .info {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  color: #fff;
+  transform: translateY(60px);
+  transition: transform 0.6s var(--ease-out);
+}
+.proj:hover .info { transform: translateY(0); }
+.proj .info .name {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.proj .info .meta {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+.proj .info .meta .accent { color: var(--accent); }
+.proj .info .meta .sep { margin: 0 10px; color: rgba(255,255,255,0.35); }
+
+/* Always-visible label chip on archive tiles (small, top-left) — provides info without hover */
+.proj .chip {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(245, 240, 230, 0.94);
+  border-radius: 999px;
+  padding: 6px 12px;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+/* ───── Footer-of-page back link ───── */
+.archive-foot {
+  padding: 80px var(--pad-x) 120px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  border-top: 1px solid var(--hair);
+  margin-top: 0;
+}
+.archive-foot .lhs {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 22ch;
+  line-height: 1.05;
+}
+
+/* ───── Lightbox modal ───── */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 48px);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+.lb[hidden] { display: none; }
+.lb.in { opacity: 1; }
+.lb-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 29, 27, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.lb-frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 1200px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.6s var(--ease-out), opacity 0.6s var(--ease-out);
+}
+.lb.in .lb-frame { transform: translateY(0); opacity: 1; }
+.lb-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.lb-image {
+  display: block;
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #1F1D1B;
+}
+.lb-panel {
+  width: 100%;
+  max-width: 720px;
+  color: #fff;
+}
+.lb-loc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.lb-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 18px;
+}
+.lb-desc {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.80);
+  max-width: 600px;
+  margin: 0 0 24px;
+}
+.lb-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.lb-stats .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lb-stats .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.lb-stats .v {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+.lb-close {
+  position: fixed;
+  top: clamp(16px, 3vw, 32px);
+  right: clamp(16px, 3vw, 32px);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.2s var(--ease-out);
+}
+.lb-close:hover { transform: scale(1.06); }
+body.lb-open { overflow: hidden; }
+@media (max-width: 700px) {
+  .lb-name { font-size: 24px; }
+  .lb-image { max-height: 55vh; }
+}
+
+</style>
+<script defer data-domain="ygplans.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- ═════ NAV ═════ -->
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-brand" aria-label="YG PLAN, home">
+    <img src="assets/logo-orange.png" alt="" />
+    <span class="wm display">YG PLAN</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="work.html" aria-current="page">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#studio">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <a href="index.html#contact" class="nav-cta">Start a project <span class="arrow">→</span></a>
+</header>
+
+<!-- ═════ PAGE HEADER ═════ -->
+<section id="main-content" class="work-hero">
+  <div class="mono-eyebrow fade-up">
+    Archive <span class="sep">·</span> 2019 — 2026 <span class="sep">·</span> Monsey, Airmont, New City, Spring Valley, Suffern
+  </div>
+  <h1 class="fade-up">A few we're proud of.</h1>
+  <p class="fade-up d-1">Eight years of drawings, organized by what they are. Renderings shown are from the design phase — some are built, some are in framing, a few are still on the board. Full project sheets on request.</p>
+  <div class="work-meta fade-up d-2">
+    <div class="item"><div class="k">Projects shown</div><div class="v">12</div></div>
+    <div class="item"><div class="k">Total drawn</div><div class="v">100+</div></div>
+    <div class="item"><div class="k">Typologies</div><div class="v">6</div></div>
+    <div class="item"><div class="k">Years</div><div class="v">8</div></div>
+  </div>
+</section>
+
+<!-- ═════ CATEGORY: CUSTOM HOMES ═════ -->
+<div class="archive">
+
+  <section class="cat" id="custom">
+    <div class="cat-head fade-up">
+      <div class="left">
+        <span class="cat-num">01 — Custom homes</span>
+        <h2 class="cat-title">Single-family residences.</h2>
+      </div>
+      <span class="cat-count">5 projects</span>
+    </div>
+    <div class="proj-grid">
+      <button class="proj w-8 fade-up" type="button" data-project-id="p-01" data-project-name="Hillside residence" data-project-location="New City, NY" data-project-type="Custom home" data-project-size="4,800 sf" data-project-year="2025" data-project-status="Under construction" data-project-description="A sloped lot custom home drawn around a young family. Modern farmhouse with board-and-batten siding, stone base, and a wing extension for the family room." data-project-image="assets/work/hillside-craftsman.jpg">
+        <span class="proj-badge" data-status="Under construction">Under construction</span>
+        <span class="chip">Custom home</span>
+        <img src="assets/work/hillside-craftsman.jpg" alt="Hillside craftsman residence, New City" loading="lazy" />
+        <div class="info">
+          <div class="name">Hillside residence — New City</div>
+          <div class="meta"><span class="accent">2025</span><span class="sep">·</span>5 bed / 4.5 bath<span class="sep">·</span>4,800 sf</div>
+        </div>
+      </button>
+      <button class="proj w-4 fade-up d-1" type="button" data-project-id="p-02" data-project-name="Stone manor" data-project-location="Pomona, NY" data-project-type="Custom home" data-project-size="6,200 sf" data-project-year="2024" data-project-status="Built" data-project-description="A formal stone manor with corner turret and slate roof, drawn for a family who wanted the weight of permanence without the fuss. Five bedrooms, ground-floor library, three-car garage." data-project-image="assets/work/manor-stone.jpg">
+        <span class="proj-badge" data-status="Built">Built</span>
+        <span class="chip">Custom home</span>
+        <img src="assets/work/manor-stone.jpg" alt="Stone manor with turret" loading="lazy" />
+        <div class="info">
+          <div class="name">Stone manor — Pomona</div>
+          <div class="meta"><span class="accent">2024</span><span class="sep">·</span>6,200 sf</div>
+        </div>
+      </button>
+      <button class="proj w-4 fade-up" type="button" data-project-id="p-03" data-project-name="Modern farmhouse" data-project-location="Suffern, NY" data-project-type="Custom home" data-project-size="4,200 sf" data-project-year="2025" data-project-status="Permit set" data-project-description="Board-and-batten siding, standing-seam metal accents, and a clean covered porch. Four bedrooms, open kitchen-and-family, mudroom off the garage." data-project-image="assets/work/hero-farmhouse.jpg">
+        <span class="proj-badge" data-status="Permit set">Permit set</span>
+        <span class="chip">Custom home</span>
+        <img src="assets/work/hero-farmhouse.jpg" alt="Modern farmhouse residence" loading="lazy" />
+        <div class="info">
+          <div class="name">Modern farmhouse — Suffern</div>
+          <div class="meta"><span class="accent">2025</span><span class="sep">·</span>4 bed / 3.5 bath</div>
+        </div>
+      </button>
+      <button class="proj w-4 fade-up d-1" type="button" data-project-id="p-04" data-project-name="Maple Street colonial" data-project-location="Monsey, NY" data-project-type="Renovation + addition" data-project-size="3,800 sf" data-project-year="2023" data-project-status="Built" data-project-description="An older colonial taken back to the studs, with a rear addition for a new kitchen and family room. Cedar trim ties the addition into the original siding." data-project-image="assets/work/colonial-cedar.jpg">
+        <span class="proj-badge" data-status="Built">Built</span>
+        <span class="chip">Custom home</span>
+        <img src="assets/work/colonial-cedar.jpg" alt="Colonial residence with cedar accent" loading="lazy" />
+        <div class="info">
+          <div class="name">Maple Street colonial — Monsey</div>
+          <div class="meta"><span class="accent">2023</span><span class="sep">·</span>Renovation + addition</div>
+        </div>
+      </button>
+      <button class="proj w-4 fade-up d-2" type="button" data-project-id="p-05" data-project-name="Saddle River residence" data-project-location="Saddle River, NJ" data-project-type="Custom home" data-project-size="5,400 sf" data-project-year="2024" data-project-status="Built" data-project-description="A traditional residence with classical portico, drawn for a family with grown children visiting often. Formal living, large dining, and a quiet first-floor primary suite." data-project-image="assets/work/custom-home-columns.jpg">
+        <span class="proj-badge" data-status="Built">Built</span>
+        <span class="chip">Custom home</span>
+        <img src="assets/work/custom-home-columns.jpg" alt="Traditional residence with classical portico" loading="lazy" />
+        <div class="info">
+          <div class="name">Saddle River residence</div>
+          <div class="meta"><span class="accent">2024</span><span class="sep">·</span>Traditional</div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═════ CATEGORY: MULTIFAMILY ═════ -->
+  <section class="cat" id="multifamily">
+    <div class="cat-head fade-up">
+      <div class="left">
+        <span class="cat-num">02 — Multifamily</span>
+        <h2 class="cat-title">Walk-ups &amp; townhouse rows.</h2>
+      </div>
+      <span class="cat-count">3 projects</span>
+    </div>
+    <div class="proj-grid">
+      <button class="proj w-12 fade-up" type="button" data-project-id="p-06" data-project-name="Cedar Lane" data-project-location="Monsey, NY" data-project-type="Multifamily — 6-unit walk-up" data-project-size="12,400 sf" data-project-year="2025" data-project-status="Under construction" data-project-description="Six units across three floors, 3/4/4 bedroom mix, with one shared rear yard and surface parking. Every unit rented before drywall went up." data-project-image="assets/work/multifamily-row.jpg">
+        <span class="proj-badge" data-status="Under construction">Under construction</span>
+        <span class="chip">Multifamily</span>
+        <img src="assets/work/multifamily-row.jpg" alt="Cedar Lane six-unit walk-up at golden hour" loading="lazy" />
+        <div class="info">
+          <div class="name">Cedar Lane — six-unit walk-up</div>
+          <div class="meta"><span class="accent">2025</span><span class="sep">·</span>6 units<span class="sep">·</span>3 / 4 / 4 bed mix<span class="sep">·</span>Monsey</div>
+        </div>
+      </button>
+      <button class="proj w-6 fade-up" type="button" data-project-id="p-07" data-project-name="Rita Avenue" data-project-location="Monsey, NY" data-project-type="Multifamily — 12-unit mid-rise" data-project-size="19,800 sf" data-project-year="2024" data-project-status="Built" data-project-description="Three stories of stone base and stucco over a partial garage. Twelve units, mixed two- and three-bedroom. Elevator-served, with rooftop mechanicals tucked behind a parapet." data-project-image="assets/work/midrise-stone.jpg">
+        <span class="proj-badge" data-status="Built">Built</span>
+        <span class="chip">Multifamily</span>
+        <img src="assets/work/midrise-stone.jpg" alt="Three-story stone-base multifamily with grand entry" loading="lazy" />
+        <div class="info">
+          <div class="name">Rita Avenue — 12-unit mid-rise</div>
+          <div class="meta"><span class="accent">2024</span><span class="sep">·</span>12 units<span class="sep">·</span>Monsey</div>
+        </div>
+      </button>
+      <button class="proj w-6 fade-up d-1" type="button" data-project-id="p-08" data-project-name="Dormer Row" data-project-location="Airmont, NY" data-project-type="Multifamily — 5 townhouses" data-project-size="11,200 sf" data-project-year="2023" data-project-status="Built" data-project-description="A row of five townhouses with shed dormers and zinc-clad bays. Each unit has its own front door, rear yard, and tandem driveway." data-project-image="assets/work/multifamily-stack.jpg">
+        <span class="proj-badge" data-status="Built">Built</span>
+        <span class="chip">Multifamily</span>
+        <img src="assets/work/multifamily-stack.jpg" alt="White townhouse stack with dormers" loading="lazy" />
+        <div class="info">
+          <div class="name">Dormer Row — Airmont</div>
+          <div class="meta"><span class="accent">2023</span><span class="sep">·</span>5 townhouses</div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═════ CATEGORY: SHULS & MOSDOS ═════ -->
+  <section class="cat" id="shuls">
+    <div class="cat-head fade-up">
+      <div class="left">
+        <span class="cat-num">03 — Shuls &amp; mosdos</span>
+        <h2 class="cat-title">Buildings for community life.</h2>
+      </div>
+      <span class="cat-count">2 projects</span>
+    </div>
+    <div class="proj-grid">
+      <button class="proj w-6 fade-up" type="button" data-project-id="p-09" data-project-name="Beis medrash — Airmont" data-project-location="Airmont, NY" data-project-type="Shul addition" data-project-size="8,400 sf" data-project-year="2025" data-project-status="Rendering" data-project-description="A sanctuary and classroom wing added to an existing shul building. Arched windows, central oculus, separate women's entry. Designed to phase in two stages." data-project-image="assets/work/shul-rendering.jpg">
+        <span class="proj-badge" data-status="Rendering">Rendering</span>
+        <span class="chip">Shul addition</span>
+        <img src="assets/work/shul-rendering.jpg" alt="Beis medrash with arched windows and oculus, Airmont" loading="lazy" />
+        <div class="info">
+          <div class="name">Beis medrash — Airmont</div>
+          <div class="meta"><span class="accent">2025</span><span class="sep">·</span>Sanctuary + classrooms</div>
+        </div>
+      </button>
+      <button class="proj w-6 fade-up d-1" type="button" data-project-id="p-10" data-project-name="Kollel Spring Valley" data-project-location="Spring Valley, NY" data-project-type="Mosdos — beis medrash + dormitory" data-project-size="14,600 sf" data-project-year="2024" data-project-status="Permit set" data-project-description="A two-building program: a 200-seat beis medrash on one side, a kollel dormitory wing on the other, sharing a central courtyard. Designed for separate weekday and Shabbos flows." data-project-image="assets/work/shul-rendering.jpg">
+        <span class="proj-badge" data-status="Permit set">Permit set</span>
+        <span class="chip">Mosdos</span>
+        <img src="assets/work/shul-rendering.jpg" alt="Beis medrash with arched windows and oculus" loading="lazy" />
+        <div class="info">
+          <div class="name">Kollel Spring Valley</div>
+          <div class="meta"><span class="accent">2024</span><span class="sep">·</span>Beis medrash + dormitory</div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═════ CATEGORY: SEMI-ATTACHED & RENOVATIONS ═════ -->
+  <section class="cat" id="semi">
+    <div class="cat-head fade-up">
+      <div class="left">
+        <span class="cat-num">04 — Semi-attached &amp; renovations</span>
+        <h2 class="cat-title">New work on existing bones.</h2>
+      </div>
+      <span class="cat-count">2 projects</span>
+    </div>
+    <div class="proj-grid">
+      <button class="proj w-8 fade-up" type="button" data-project-id="p-11" data-project-name="Rear addition" data-project-location="Spring Valley, NY" data-project-type="Renovation" data-project-size="3,200 sf" data-project-year="2025" data-project-status="Under construction" data-project-description="A rear addition plus interior gut, drawn for a family that outgrew their starter house. New family room, eat-in kitchen, modern open stair, and a second-floor primary suite." data-project-image="assets/work/modern-semi.jpg">
+        <span class="proj-badge" data-status="Under construction">Under construction</span>
+        <span class="chip">Renovation</span>
+        <img src="assets/work/modern-semi.jpg" alt="Modern semi-attached with cedar accent and stone base" loading="lazy" />
+        <div class="info">
+          <div class="name">Rear addition — Spring Valley</div>
+          <div class="meta"><span class="accent">2025</span><span class="sep">·</span>Rear addition + interior gut</div>
+        </div>
+      </button>
+      <button class="proj w-4 fade-up d-1" type="button" data-project-id="p-12" data-project-name="Twin gable" data-project-location="New Hempstead, NY" data-project-type="Semi-attached — 2-unit" data-project-size="5,800 sf" data-project-year="2024" data-project-status="Built" data-project-description="A side-by-side semi with twin gables and cedar siding. Party wall worked out for sound, light worked out for privacy, two driveways tucked along the side." data-project-image="assets/work/renovation-duplex.jpg">
+        <span class="proj-badge" data-status="Built">Built</span>
+        <span class="chip">Semi-attached</span>
+        <img src="assets/work/renovation-duplex.jpg" alt="Modern semi-attached duplex with cedar siding" loading="lazy" />
+        <div class="info">
+          <div class="name">Twin gable — New Hempstead</div>
+          <div class="meta"><span class="accent">2024</span><span class="sep">·</span>Two-unit semi</div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═════ FOOT ═════ -->
+<div class="archive-foot">
+  <div class="lhs">Have a project? Let's draw it.</div>
+  <a href="index.html#contact" class="link">Start a project <span class="arrow">→</span></a>
+</div>
+
+<!-- ═════ FOOTER ═════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-row1">
+      <div class="footer-wm display">YG PLAN</div>
+      <div class="footer-tag">Plans that fit you,<br>your vision,<br>your project.</div>
+    </div>
+    <div class="footer-line"></div>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-head">Studio</div>
+        <ul>
+          <li><a href="index.html#about-studio">About</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#work">Selected work</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Services</div>
+        <ul>
+          <li><a href="custom-homes.html">Custom homes</a></li>
+          <li><a href="semi-attached.html">Semi-attached</a></li>
+          <li><a href="multifamily.html">Multifamily</a></li>
+          <li><a href="shuls.html">Shuls &amp; mosdos</a></li>
+          <li><a href="renovations.html">Renovations</a></li>
+          <li><a href="site-plans.html">Site plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Visit</div>
+        <ul>
+          <li>31 Rita Ave<br>Monsey, NY 10952</li>
+          <li class="footer-col-gap">Mon–Thu &nbsp; 9am–6pm<br>Friday &nbsp;&nbsp;&nbsp;&nbsp; 9am–1pm</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Connect</div>
+        <ul>
+          <li><a href="tel:+18452636855">845-263-6855</a></li>
+          <li><a href="mailto:tuli@ygplans.com">tuli@ygplans.com</a></li>
+          <li><span class="footer-soon">Instagram (coming soon)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-line footer-line-2"></div>
+    <div class="footer-row3">
+      <div>31 Rita Ave, Monsey NY <span class="sep">·</span> 845-263-6855 <span class="sep">·</span> tuli@ygplans.com</div>
+      <div>© 2026 YG PLAN <span class="sep">·</span> Built in Monsey</div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+<script src="work-lightbox.js" defer></script>
+
+<!-- ═════ LIGHTBOX MODAL ═════ -->
+<div class="lb" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lbName">
+  <div class="lb-scrim" data-lb-close></div>
+  <div class="lb-frame" role="document">
+    <button class="lb-close" type="button" data-lb-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <div class="lb-image-wrap">
+      <img class="lb-image" id="lbImage" alt="" />
+    </div>
+    <div class="lb-panel">
+      <div class="lb-loc" id="lbLoc"></div>
+      <h2 class="lb-name" id="lbName"></h2>
+      <p class="lb-desc" id="lbDesc"></p>
+      <div class="lb-stats" id="lbStats"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

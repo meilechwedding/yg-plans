@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YG PLAN — Architectural Design Studio · Monsey, NY</title>
+<meta name="description" content="Architectural design studio in Monsey, NY. Custom homes, semi-attached, multifamily, shuls, renovations, and site plans for families, builders, and developers across Rockland County." />
+<link rel="canonical" href="https://yg-plans-repo.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="YG PLAN — Architectural Design Studio">
+<meta property="og:description" content="Architectural design for homes, shuls, and multifamily projects in Monsey and Rockland County.">
+<meta property="og:image" content="https://yg-plans-repo.vercel.app/assets/og-image.jpg">
+<meta property="og:url" content="https://yg-plans-repo.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YG PLAN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YG PLAN — Architectural Design Studio">
+<meta name="twitter:description" content="Architectural design for homes, shuls, and multifamily projects in Monsey and Rockland County.">
+<meta name="twitter:image" content="https://yg-plans-repo.vercel.app/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="assets/work/hero-farmhouse.jpg" as="image" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260528-fix" />
+
+<!-- LocalBusiness schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "YG PLAN",
+  "description": "Architectural design studio specializing in custom homes, semi-attached, multifamily, shuls, renovations, and site plans in Monsey and Rockland County, NY.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "31 Rita Ave",
+    "addressLocality": "Monsey",
+    "addressRegion": "NY",
+    "postalCode": "10952",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-845-263-6855",
+  "email": "tuli@ygplans.com",
+  "url": "https://yg-plans-repo.vercel.app",
+  "image": "https://yg-plans-repo.vercel.app/assets/og-image.jpg",
+  "priceRange": "$$",
+  "areaServed": [
+    {"@type": "City", "name": "Monsey"},
+    {"@type": "City", "name": "Airmont"},
+    {"@type": "City", "name": "New City"},
+    {"@type": "City", "name": "Spring Valley"},
+    {"@type": "City", "name": "Suffern"},
+    {"@type": "City", "name": "Pomona"},
+    {"@type": "City", "name": "New Hempstead"},
+    {"@type": "AdministrativeArea", "name": "Rockland County"}
+  ],
+  "founder": [
+    {"@type": "Person", "name": "Yidel Grunberger"},
+    {"@type": "Person", "name": "Tuli Strasser"}
+  ],
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "09:00", "closes": "18:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "13:00"}
+  ]
+}
+</script>
+
+<!-- Analytics -->
+<script defer data-domain="ygplans.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="hero-atmos" id="heroAtmos" aria-hidden="true">
+  <img src="assets/work/hero-farmhouse.jpg" alt="" width="1600" height="1200" loading="eager" fetchpriority="high" />
+</div>
+
+<div class="page-crosshairs" aria-hidden="true">
+  <span class="xh tl"></span><span class="xh tr"></span><span class="xh bl"></span><span class="xh br"></span>
+</div>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- ═════ NAV ═════ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav-brand" aria-label="YG PLAN, home">
+    <img src="assets/logo-icon.png" alt="" />
+    <span class="wm display">YG PLAN</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="work.html">Work</a>
+    <a href="#work">Services</a>
+    <a href="#about-studio">Studio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#contact" class="nav-cta">Start a project <span class="arrow">→</span></a>
+</header>
+
+<!-- ═════ MOBILE MENU ═════ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+    <span></span><span></span>
+  </button>
+  <nav class="mobile-menu-links" aria-label="Mobile primary">
+    <a href="work.html">Work</a>
+    <a href="#work">Services</a>
+    <a href="#about-studio">Studio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <span class="mobile-menu-rule" aria-hidden="true"></span>
+  <div class="mobile-menu-meta">
+    <div>31 Rita Ave, Monsey NY 10952</div>
+    <div><a href="tel:8452636855">845-263-6855</a></div>
+    <div><a href="mailto:tuli@ygplans.com">tuli@ygplans.com</a></div>
+  </div>
+  <a href="#contact" class="mobile-menu-cta">Start a project <span class="arrow">→</span></a>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════════════════
+     01 · HERO
+     ════════════════════════════════════════════════════ -->
+<section class="hero" id="top" data-screen-label="01 Hero">
+  <div class="hero-bg-fx" aria-hidden="true">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-dotgrid"></div>
+  </div>
+
+  <span class="hero-mark corner tl" aria-hidden="true"></span>
+  <span class="hero-mark corner tr" aria-hidden="true"></span>
+  <span class="hero-mark corner bl" aria-hidden="true"></span>
+  <span class="hero-mark corner br" aria-hidden="true"></span>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow hero-line l-1">
+      <span class="dot" aria-hidden="true"></span>
+      <span>MONSEY, NY</span>
+      <span class="rule" aria-hidden="true"></span>
+      <span>ARCHITECTURAL DESIGN STUDIO</span>
+    </div>
+    <h1 id="heroHeadline">
+      <span class="hl">Drawn for</span>
+      <span class="hl"><span class="yr">your</span> lot,</span>
+      <span class="hl"><span class="yr">your</span> vision,</span>
+      <span class="hl"><span class="yr">your</span> build.</span>
+    </h1>
+    <p class="hero-subhead hero-line l-2">Custom homes, additions, shuls, multifamily, and site plans — drawn from first layout to permit-ready set, across Monsey and Rockland County.</p>
+    <div class="hero-cta hero-line l-3">
+      <a href="#contact" class="btn-primary">Start a project <span class="arrow">→</span></a>
+      <a href="#work" class="btn-secondary">View selected work</a>
+    </div>
+    <div class="hero-ribbon-wrap hero-line l-3">
+      <div class="hero-ribbon" id="heroRibbon" aria-label="Services we offer">
+        <div class="ribbon-track" id="ribbonTrack">
+          <button type="button" class="ribbon-item" data-cat="custom">Custom homes</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="reno">Renovations &amp; additions</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="semi">Semi-attached</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="multi">Multifamily</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="shul">Shuls &amp; mosdos</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="site">Site plans</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="custom" aria-hidden="true" tabindex="-1">Custom homes</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="reno" aria-hidden="true" tabindex="-1">Renovations &amp; additions</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="semi" aria-hidden="true" tabindex="-1">Semi-attached</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="multi" aria-hidden="true" tabindex="-1">Multifamily</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="shul" aria-hidden="true" tabindex="-1">Shuls &amp; mosdos</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+          <button type="button" class="ribbon-item" data-cat="site" aria-hidden="true" tabindex="-1">Site plans</button>
+          <span class="ribbon-dot" aria-hidden="true">&bull;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-fade" aria-hidden="true"></div>
+</section>
+<div class="hero-divider" id="heroDivider" aria-hidden="true"></div>
+
+<!-- ════════════════════════════════════════════════════
+     02 · WORK (services + projects, filterable)
+     ════════════════════════════════════════════════════ -->
+<section class="section-pad" id="work" data-screen-label="02 Work">
+  <div class="inner">
+    <div class="sec-head">
+      <span class="sec-eyebrow fade-up">01 / Selected work</span>
+      <h2 class="fade-up">Selected work.</h2>
+      <p class="fade-up">A selection of recent projects across every category — drawn out of one studio on Rita Ave.</p>
+    </div>
+
+    <div class="work-controls fade-up d-1">
+      <div class="pill-row" role="tablist" aria-label="Filter projects by category">
+        <button type="button" class="pill is-active" data-cat="all" role="tab" aria-selected="true">All</button>
+        <button type="button" class="pill" data-cat="custom" role="tab" aria-selected="false">Custom homes</button>
+        <button type="button" class="pill" data-cat="reno" role="tab" aria-selected="false">Renovations &amp; additions</button>
+        <button type="button" class="pill" data-cat="semi" role="tab" aria-selected="false">Semi-attached</button>
+        <button type="button" class="pill" data-cat="multi" role="tab" aria-selected="false">Multifamily</button>
+        <button type="button" class="pill" data-cat="shul" role="tab" aria-selected="false">Shuls &amp; mosdos</button>
+        <button type="button" class="pill" data-cat="site" role="tab" aria-selected="false">Site plans</button>
+      </div>
+      <div class="g-nav-wrap">
+        <button type="button" class="g-nav g-prev" id="galleryPrev" aria-label="Scroll gallery left">←</button>
+        <button type="button" class="g-nav g-next" id="galleryNext" aria-label="Scroll gallery right">→</button>
+      </div>
+    </div>
+
+    <div class="gallery fade-up d-2" id="projectGallery">
+      <div class="gallery-track" id="galleryTrack">
+        <a class="g-tile" data-cat="custom" href="work.html#p-01">
+          <img src="assets/work/hillside-craftsman.jpg" alt="Hillside residence rendering" loading="lazy" />
+          <span class="g-code">YG-2023-001</span>
+          <span class="tile-badge" data-status="Built">Built</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Hillside residence</div>
+            <div class="g-meta"><span class="cat">Custom home</span> &middot; New City</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="multi" href="work.html#p-06">
+          <img src="assets/work/multifamily-row.jpg" alt="Cedar Lane six-unit walk-up rendering" loading="lazy" />
+          <span class="g-code">YG-2024-006</span>
+          <span class="tile-badge" data-status="In construction">In construction</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Cedar Lane</div>
+            <div class="g-meta"><span class="cat">Multifamily</span> &middot; Monsey</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="shul" href="work.html#p-09">
+          <img src="assets/work/shul-rendering.jpg" alt="Beis medrash Airmont rendering" loading="lazy" />
+          <span class="g-code">YG-2024-009</span>
+          <span class="tile-badge" data-status="Permit set">Permit set</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Beis medrash &mdash; Airmont</div>
+            <div class="g-meta"><span class="cat">Shuls &amp; mosdos</span> &middot; Airmont</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="custom" href="work.html#p-02">
+          <img src="assets/work/manor-stone.jpg" alt="Stone manor rendering" loading="lazy" />
+          <span class="g-code">YG-2023-002</span>
+          <span class="tile-badge" data-status="Built">Built</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Stone manor</div>
+            <div class="g-meta"><span class="cat">Custom home</span> &middot; Pomona</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="semi" href="work.html#p-12">
+          <img src="assets/work/modern-semi.jpg" alt="Twin gable semi-attached rendering" loading="lazy" />
+          <span class="g-code">YG-2025-012</span>
+          <span class="tile-badge" data-status="Design phase">Design phase</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Twin gable</div>
+            <div class="g-meta"><span class="cat">Semi-attached</span> &middot; New Hempstead</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="reno" href="work.html#p-04">
+          <img src="assets/work/colonial-cedar.jpg" alt="Maple Street colonial renovation rendering" loading="lazy" />
+          <span class="g-code">YG-2023-004</span>
+          <span class="tile-badge" data-status="Built">Built</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Maple Street colonial</div>
+            <div class="g-meta"><span class="cat">Renovations &amp; additions</span> &middot; Monsey</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="multi" href="work.html#p-07">
+          <img src="assets/work/multifamily-stack.jpg" alt="Rita Avenue twelve-unit mid-rise rendering" loading="lazy" />
+          <span class="g-code">YG-2024-007</span>
+          <span class="tile-badge" data-status="Permit set">Permit set</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Rita Avenue</div>
+            <div class="g-meta"><span class="cat">Multifamily</span> &middot; Monsey</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="shul" href="work.html#p-10">
+          <img src="assets/work/shul-stone.jpg" alt="Kollel Spring Valley rendering" loading="lazy" />
+          <span class="g-code">YG-2025-010</span>
+          <span class="tile-badge" data-status="Design phase">Design phase</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Kollel Spring Valley</div>
+            <div class="g-meta"><span class="cat">Shuls &amp; mosdos</span> &middot; Spring Valley</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="custom" href="work.html#p-03">
+          <img src="assets/work/hero-farmhouse.jpg" alt="Modern farmhouse rendering" loading="lazy" />
+          <span class="g-code">YG-2024-003</span>
+          <span class="tile-badge" data-status="In construction">In construction</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Modern farmhouse</div>
+            <div class="g-meta"><span class="cat">Custom home</span> &middot; Suffern</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="reno" href="work.html#p-11">
+          <img src="assets/work/renovation-duplex.jpg" alt="Rear addition rendering" loading="lazy" />
+          <span class="g-code">YG-2023-011</span>
+          <span class="tile-badge" data-status="Built">Built</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Rear addition</div>
+            <div class="g-meta"><span class="cat">Renovations &amp; additions</span> &middot; Spring Valley</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="multi" href="work.html#p-08">
+          <img src="assets/work/midrise-stone.jpg" alt="Dormer Row five-townhouse rendering" loading="lazy" />
+          <span class="g-code">YG-2025-008</span>
+          <span class="tile-badge" data-status="Design phase">Design phase</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Dormer Row</div>
+            <div class="g-meta"><span class="cat">Multifamily</span> &middot; Airmont</div>
+          </div>
+        </a>
+        <a class="g-tile" data-cat="custom" href="work.html#p-05">
+          <img src="assets/work/custom-home-columns.jpg" alt="Saddle River residence rendering" loading="lazy" />
+          <span class="g-code">YG-2023-005</span>
+          <span class="tile-badge" data-status="Built">Built</span>
+          <div class="g-scrim" aria-hidden="true"></div>
+          <div class="g-info">
+            <div class="g-name">Saddle River residence</div>
+            <div class="g-meta"><span class="cat">Custom home</span> &middot; Saddle River, NJ</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-foot fade-up d-3">
+      <a href="work.html" class="archive-link">See more work <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     03 · PHILOSOPHY + STATS strip
+     ════════════════════════════════════════════════════ -->
+<section class="philosophy-stats" id="philosophy" aria-label="Studio philosophy" data-screen-label="03 Philosophy">
+  <div class="inner">
+    <span class="sec-eyebrow fade-up ph-eyebrow">02 / Philosophy</span>
+    <span class="ph-hairline" aria-hidden="true"></span>
+    <blockquote class="ph-quote fade-up">
+      “We draw the home you’ll live in. Not the home we’d live in.”
+    </blockquote>
+    <div class="ph-attrib fade-up d-1">— Yidel &amp; Tuli</div>
+    <span class="ph-hairline bottom" aria-hidden="true"></span>
+
+    <div class="qual-stats">
+      <div class="qstat fade-up">
+        <span class="qstat-num">[01]</span>
+        <div class="qstat-label" data-count="8" data-suffix=" Years">8 Years</div>
+        <div class="qstat-desc">Drawing plans across Rockland County</div>
+      </div>
+      <div class="qstat fade-up d-1">
+        <span class="qstat-num">[02]</span>
+        <div class="qstat-label" data-count="100" data-suffix="%">100%</div>
+        <div class="qstat-desc">Client satisfaction, every project</div>
+      </div>
+      <div class="qstat fade-up d-2">
+        <span class="qstat-num">[03]</span>
+        <div class="qstat-label">6 Categories</div>
+        <div class="qstat-desc">All drawn from one studio</div>
+      </div>
+      <div class="qstat fade-up d-3">
+        <span class="qstat-num">[04]</span>
+        <div class="qstat-label">Monsey, NY</div>
+        <div class="qstat-desc">31 Rita Ave, 10952</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     04 · STUDIO (about + process)
+     ════════════════════════════════════════════════════ -->
+<section class="section-pad" id="about-studio" data-screen-label="04 Studio">
+  <div class="inner">
+    <div class="studio-head sec-head">
+      <span class="sec-eyebrow fade-up">03 / Studio</span>
+      <h2 class="fade-up">Drawn in Monsey.</h2>
+      <p class="lede fade-up">Yidel Grunberger and Tuli Strasser run YG Plan from Monsey, drawing homes, additions, shuls, and multifamily projects for builders, developers, and mosdos across Rockland County.</p>
+    </div>
+
+    <div class="studio-grid">
+      <div class="studio-photo fade-up" aria-hidden="true"></div>
+      <div class="studio-steps" id="studioSteps">
+        <div class="studio-step" data-step="0">
+          <div class="ss-num">01.</div>
+          <div class="ss-name">Listen.</div>
+          <p class="ss-desc">A conversation first. The lot, the zoning, the budget, the goals — what you’re trying to build, and what can’t be compromised.</p>
+        </div>
+        <div class="studio-step" data-step="1">
+          <div class="ss-num">02.</div>
+          <div class="ss-name">Draft.</div>
+          <p class="ss-desc">First plans within two weeks. Layouts, elevations, the shape of the thing on paper — something real to react to.</p>
+        </div>
+        <div class="studio-step" data-step="2">
+          <div class="ss-num">03.</div>
+          <div class="ss-name">Refine.</div>
+          <p class="ss-desc">Move a wall. Add a window. Cut a closet. We revise until the plan matches the way the space will actually be used.</p>
+        </div>
+        <div class="studio-step" data-step="3">
+          <div class="ss-num">04.</div>
+          <div class="ss-name">Permit.</div>
+          <p class="ss-desc">Drawings prepared for filing. Revisions handled when the building department or planning board has notes.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="studio-tag fade-up">Drawn in Monsey. Built across Rockland County.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     05 · TESTIMONIALS (rotating, one at a time)
+     ════════════════════════════════════════════════════ -->
+<section class="section-pad" id="testimonials" data-screen-label="05 Testimonials">
+  <div class="inner">
+    <div class="sec-head center">
+      <span class="sec-eyebrow fade-up">04 / Clients</span>
+      <h2 class="fade-up">In their own words.</h2>
+    </div>
+
+    <div class="t-rotator fade-up" id="testimonialRotator">
+      <div class="t-stage" id="tStage">
+        <div class="t-slide is-active" data-i="0">
+          <div class="t-image"><img src="assets/work/hillside-craftsman.jpg" alt="Hillside residence rendering" loading="lazy" /></div>
+          <div class="t-text">
+            <div class="t-mark" aria-hidden="true">“</div>
+            <p class="t-quote">They listened. That was the whole story. The plans came back looking like the house we’d been describing for two years.</p>
+            <span class="t-rule" aria-hidden="true"></span>
+            <div class="t-by">Custom home client · New City</div>
+          </div>
+        </div>
+        <div class="t-slide" data-i="1">
+          <div class="t-image"><img src="assets/work/multifamily-row.jpg" alt="Cedar Lane multifamily rendering" loading="lazy" /></div>
+          <div class="t-text">
+            <div class="t-mark" aria-hidden="true">“</div>
+            <p class="t-quote">We came in with a sketch on a napkin. They turned it into a building. Six units, every one rented before drywall went up.</p>
+            <span class="t-rule" aria-hidden="true"></span>
+            <div class="t-by">Multifamily developer · Monsey</div>
+          </div>
+        </div>
+        <div class="t-slide" data-i="2">
+          <div class="t-image"><img src="assets/work/shul-rendering.jpg" alt="Beis medrash rendering" loading="lazy" /></div>
+          <div class="t-text">
+            <div class="t-mark" aria-hidden="true">“</div>
+            <p class="t-quote">Plain conversations. No fancy talk. They told us what we were looking at and what came next. That was worth a lot.</p>
+            <span class="t-rule" aria-hidden="true"></span>
+            <div class="t-by">Shul committee · Airmont</div>
+          </div>
+        </div>
+        <div class="t-slide" data-i="3">
+          <div class="t-image"><img src="assets/work/colonial-cedar.jpg" alt="Colonial renovation rendering" loading="lazy" /></div>
+          <div class="t-text">
+            <div class="t-mark" aria-hidden="true">“</div>
+            <p class="t-quote">First plans in two weeks. Three rounds, then a permit set. Our builder said it was the cleanest package he’d worked from in years.</p>
+            <span class="t-rule" aria-hidden="true"></span>
+            <div class="t-by">Renovation client · Spring Valley</div>
+          </div>
+        </div>
+        <div class="t-slide" data-i="4">
+          <div class="t-image"><img src="assets/work/midrise-stone.jpg" alt="Mid-rise stone building rendering" loading="lazy" /></div>
+          <div class="t-text">
+            <div class="t-mark" aria-hidden="true">“</div>
+            <p class="t-quote">Tight lot. Complicated zoning. They worked out the setbacks before we wasted money on the wrong design. That phone call saved us months.</p>
+            <span class="t-rule" aria-hidden="true"></span>
+            <div class="t-by">Developer · Suffern</div>
+          </div>
+        </div>
+        <div class="t-slide" data-i="5">
+          <div class="t-image"><img src="assets/work/manor-stone.jpg" alt="Stone manor rendering" loading="lazy" /></div>
+          <div class="t-text">
+            <div class="t-mark" aria-hidden="true">“</div>
+            <p class="t-quote">We needed an addition that wouldn’t fight the original house. They drew it like it had always been there.</p>
+            <span class="t-rule" aria-hidden="true"></span>
+            <div class="t-by">Custom home client · Monsey</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-dots" id="tDots" role="tablist" aria-label="Choose testimonial">
+        <button type="button" class="t-dot is-active" data-i="0" aria-label="Testimonial 1"></button>
+        <button type="button" class="t-dot" data-i="1" aria-label="Testimonial 2"></button>
+        <button type="button" class="t-dot" data-i="2" aria-label="Testimonial 3"></button>
+        <button type="button" class="t-dot" data-i="3" aria-label="Testimonial 4"></button>
+        <button type="button" class="t-dot" data-i="4" aria-label="Testimonial 5"></button>
+        <button type="button" class="t-dot" data-i="5" aria-label="Testimonial 6"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     06 · INSIDE THE STUDIO (video moment)
+     ════════════════════════════════════════════════════ -->
+<section class="section-pad studio-film" id="inside-the-studio" data-screen-label="06 Inside the studio">
+  <div class="inner">
+    <div class="sec-head center">
+      <span class="sec-eyebrow fade-up">05 / Inside the studio</span>
+    </div>
+    <div class="film-frame fade-up d-1">
+      <video class="film-video" src="assets/work/signature.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/work/hero-farmhouse.jpg" aria-label="Inside the YG Plan studio" data-playback-rate="0.4"></video>
+    </div>
+    <p class="film-caption fade-up d-2">“Rita Ave, Monsey. Eight years drawing plans for the people who’ll live in them.”</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     07 · CONTACT
+     ════════════════════════════════════════════════════ -->
+<section class="section-pad" id="contact" data-screen-label="07 Contact">
+  <div class="inner">
+    <div class="sec-head center">
+      <span class="sec-eyebrow fade-up">06 / Contact</span>
+      <h2 class="fade-up">Tell us what you're building.</h2>
+      <p class="fade-up">Send the basics — project type, location, and where you are in the process. We’ll respond with the next step.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="cf-col">
+      <form class="cf fade-up" id="contactForm" action="https://formsubmit.co/ajax/tuli@ygplans.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New project inquiry — yg plans" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off" />
+
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="cf-field">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required />
+          </div>
+        </div>
+
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="f-email">Email <span class="opt">(optional)</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" />
+          </div>
+          <div class="cf-field">
+            <label for="f-type">Project type</label>
+            <select id="f-type" name="project_type" required>
+              <option value="" disabled selected hidden>Choose one…</option>
+              <option>Custom home</option>
+              <option>Renovation or addition</option>
+              <option>Semi-attached</option>
+              <option>Multifamily</option>
+              <option>Shul or mosdos</option>
+              <option>Site plan</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="f-loc">Project location</label>
+            <input id="f-loc" name="location" type="text" autocomplete="address-level2" required />
+          </div>
+          <div class="cf-field">
+            <label for="f-stage">Project stage <span class="opt">(optional)</span></label>
+            <select id="f-stage" name="project_stage">
+              <option value="" disabled selected hidden>Choose one…</option>
+              <option>Just starting</option>
+              <option>Have a lot or address</option>
+              <option>Need permit drawings</option>
+              <option>Already working with a builder</option>
+              <option>Revising an existing plan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cf-field cf-field-textarea">
+          <label for="f-msg">Tell us about the project</label>
+          <textarea id="f-msg" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="cf-submit" id="contactSubmit">
+          <span>Send project details</span>
+          <span class="arrow">→</span>
+        </button>
+        <div class="cf-status" id="formStatus" aria-live="polite"></div>
+      </form>
+
+      <div class="cf-success" id="formSuccess" hidden>
+        <div class="ok-dot" aria-hidden="true">●</div>
+        <p>Got it. Tuli will reply within one business day.</p>
+      </div>
+      </div>
+
+      <aside class="contact-side fade-up d-1">
+        <div class="cs-block">
+          <div class="cs-head">Studio</div>
+          <div class="cs-body">YG PLAN<br>31 Rita Ave, Monsey NY 10952</div>
+        </div>
+        <div class="cs-block">
+          <div class="cs-head">Call</div>
+          <div class="cs-body"><a href="tel:+18452636855">845-263-6855</a></div>
+        </div>
+        <div class="cs-block">
+          <div class="cs-head">Email</div>
+          <div class="cs-body"><a href="mailto:tuli@ygplans.com">tuli@ygplans.com</a></div>
+        </div>
+        <div class="cs-block">
+          <div class="cs-head">WhatsApp</div>
+          <div class="cs-body"><a href="https://wa.me/18452636855" target="_blank" rel="noopener">Message us <span class="arrow" aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="cs-block">
+          <div class="cs-head">Hours</div>
+          <div class="cs-body">Mon–Thu &nbsp;9am–6pm<br>Friday &nbsp;&nbsp;&nbsp;&nbsp;9am–1pm</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═════ MOBILE STICKY CTA ═════ -->
+<div class="mobile-stick" aria-label="Quick contact">
+  <a class="call" href="tel:+18452636855" aria-label="Call YG Plan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg>
+    Call
+  </a>
+  <a class="wa" href="https://wa.me/18452636855" target="_blank" rel="noopener" aria-label="WhatsApp YG Plan">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.92 11.92 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.32-1.66a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.43-8.43ZM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.98 1-3.65-.23-.37a9.88 9.88 0 0 1-1.52-5.27c0-5.46 4.44-9.9 9.91-9.9 2.65 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.9 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.11 3.22 5.11 4.51.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.34Z"/></svg>
+    WhatsApp
+  </a>
+  <a class="start" href="#contact" aria-label="Start a project">Start a project</a>
+</div>
+
+<!-- ═════ Hidden FAQ — SEO schema only, visually hidden ═════ -->
+<section class="seo-faq sr-only" aria-hidden="true" itemscope itemtype="https://schema.org/FAQPage">
+  <h2>Frequently asked questions</h2>
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name">How long does it take to get plans?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">First drafts usually within two to three weeks of our first conversation. Most projects go through two to three revision rounds before the permit set is ready — typically six to ten weeks from start to filing, depending on scope.</p>
+    </div>
+  </div>
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name">Are you licensed architects?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">YG Plan is an architectural design studio. We draw plans, layouts, elevations, and construction documents. When a project requires a licensed stamp, we coordinate with a licensed New York architect or engineer.</p>
+    </div>
+  </div>
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name">Do you handle permits and planning board?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">We prepare the full drawing package and work with your filer or engineer on revisions through the building department and Planning Board.</p>
+    </div>
+  </div>
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name">Do you work outside Monsey?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">Yes. Mostly across Rockland County — Monsey, Airmont, New City, Spring Valley, Suffern, Pomona, New Hempstead, Chestnut Ridge. We’ve done projects in northern Bergen County, NJ as well.</p>
+    </div>
+  </div>
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name">I just have an idea. Is that enough to start?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <p itemprop="text">That’s where most projects begin. A rough sketch. A Pinterest board. Even just “I want my parents to have their own apartment downstairs.” We’ll take it from there. The first conversation is free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ FOOTER ═════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-row1">
+      <div class="footer-wm display">YG PLAN</div>
+      <div class="footer-tag">From first sketch<br>to permit-ready<br>drawings.</div>
+    </div>
+    <div class="footer-line"></div>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-head">Studio</div>
+        <ul>
+          <li><a href="#about-studio">About</a></li>
+          <li><a href="#about-studio">Process</a></li>
+          <li><a href="#work">Selected work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Services</div>
+        <ul>
+          <li><a href="custom-homes.html">Custom homes</a></li>
+          <li><a href="renovations.html">Renovations &amp; additions</a></li>
+          <li><a href="semi-attached.html">Semi-attached</a></li>
+          <li><a href="multifamily.html">Multifamily</a></li>
+          <li><a href="shuls.html">Shuls &amp; mosdos</a></li>
+          <li><a href="site-plans.html">Site plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Visit</div>
+        <ul>
+          <li>31 Rita Ave<br>Monsey, NY 10952</li>
+          <li class="footer-col-gap">Mon–Thu &nbsp; 9am–6pm<br>Friday &nbsp;&nbsp;&nbsp;&nbsp; 9am–1pm</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Connect</div>
+        <ul>
+          <li><a href="tel:+18452636855">845-263-6855</a></li>
+          <li><a href="mailto:tuli@ygplans.com">tuli@ygplans.com</a></li>
+          <li><a href="https://wa.me/18452636855" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-line footer-line-2"></div>
+    <div class="footer-row3">
+      <div>31 Rita Ave, Monsey NY <span class="sep">·</span> 845-263-6855 <span class="sep">·</span> tuli@ygplans.com</div>
+      <div>© 2026 YG PLAN <span class="sep">·</span> Built in Monsey</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═════ SERVICE POPUP MODAL ═════ -->
+<div class="svc-modal" id="svcModal" aria-hidden="true">
+  <div class="svc-modal-backdrop" data-close="true"></div>
+  <div class="svc-modal-card" role="dialog" aria-modal="true" aria-labelledby="svcModalTitle">
+    <span class="svc-modal-tick tl" aria-hidden="true"></span>
+    <span class="svc-modal-tick tr" aria-hidden="true"></span>
+    <span class="svc-modal-tick bl" aria-hidden="true"></span>
+    <span class="svc-modal-tick br" aria-hidden="true"></span>
+    <h3 class="svc-modal-title" id="svcModalTitle"></h3>
+    <p class="svc-modal-body" id="svcModalBody"></p>
+    <div class="svc-modal-actions">
+      <a class="svc-modal-btn primary" id="svcModalWork" href="#work">See the work <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="svc-modal-btn outline" data-close="true" href="#contact">Contact us <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</div>
+
+<script src="app.js" defer></script>
+<script src="contact-form.js" defer></script>
+<script>
+  // Video playback rate honour data-playback-rate on any video
+  (function () {
+    function applyRates() {
+      document.querySelectorAll('video[data-playback-rate]').forEach(function (v) {
+        var r = parseFloat(v.getAttribute('data-playback-rate'));
+        if (!isNaN(r) && r > 0) {
+          try { v.playbackRate = r; v.defaultPlaybackRate = r; } catch (e) {}
+        }
+      });
+    }
+    if (document.readyState !== 'loading') applyRates();
+    else document.addEventListener('DOMContentLoaded', applyRates);
+    document.querySelectorAll('video[data-playback-rate]').forEach(function (v) {
+      v.addEventListener('loadedmetadata', applyRates);
+      v.addEventListener('play', applyRates);
+    });
+  })();
+
+  // Counter-up animation for stats (.qstat-label[data-count])
+  (function () {
+    var qstats = document.querySelectorAll('.qstat');
+    if (!qstats.length || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('is-counted');
+        var num = el.querySelector('.qstat-label[data-count]');
+        if (num) {
+          var target = parseFloat(num.getAttribute('data-count'));
+          var suffix = num.getAttribute('data-suffix') || '';
+          var dur = 1400;
+          var start = performance.now();
+          function tick(now) {
+            var t = Math.min(1, (now - start) / dur);
+            var eased = 1 - Math.pow(1 - t, 3);
+            var val = Math.round(eased * target);
+            num.firstChild ? num.firstChild.nodeValue = val + suffix : (num.textContent = val + suffix);
+            if (t < 1) requestAnimationFrame(tick);
+            else num.textContent = target + suffix;
+          }
+          requestAnimationFrame(tick);
+        }
+        io.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    qstats.forEach(function (s) { io.observe(s); });
+  })();
+</script>
+</body>
+</html>

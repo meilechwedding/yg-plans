@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yg-plans-repo.vercel.app/sitemap.xml
